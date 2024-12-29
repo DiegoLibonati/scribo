@@ -1,5 +1,5 @@
-import React from "react";
 import { Routes, Route, Navigate } from "react-router-native";
+
 import { NotesPage } from "../pages/NotesPage/NotesPage";
 import { NotePage } from "../pages/NotePage/NotePage";
 import { CreateNotePage } from "../pages/CreateNotePage/CreateNotePage";

@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-native";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import Constants from "expo-constants";
+
+import { Note } from "../../entities/entities";
+
 import { NavBar } from "../../components/NavBar/NavBar";
 import { InputWithLabel } from "../../components/InputWithLabel/InputWithLabel";
-import { useDispatch } from "react-redux";
-import { handleNewNote } from "../../slices/notes/notesSlice";
-import { useNavigate } from "react-router-native";
+
+import { useNotesStore } from "../../hooks/useNotesStore";
 import { theme } from "../../theme/theme";
-import { Note } from "../../types/types";
 
 export const CreateNotePage = (): JSX.Element => {
   const [formData, setFormData] = useState<Pick<Note, "title" | "content">>({
@@ -15,12 +17,22 @@ export const CreateNotePage = (): JSX.Element => {
     content: "",
   });
 
-  const dispatch = useDispatch();
+  const { handleSetNewNote } = useNotesStore();
+
   const navigate = useNavigate();
 
+  const onInputChange = (key: string, value: string): void => {
+    setFormData((state) => ({ ...state, [key]: value }));
+  };
+
   const handleSubmit = (): void => {
-    const note = {
-      id: Number(new Date().getMilliseconds()),
+    const title = formData.title.trim();
+    const content = formData.content.trim();
+
+    if (!title || !content) return;
+
+    const note: Note = {
+      id: String(new Date().getMilliseconds()),
       date: new Date().toLocaleString("default", {
         day: "2-digit",
         month: "long",
@@ -29,13 +41,13 @@ export const CreateNotePage = (): JSX.Element => {
       content: formData.content,
     };
 
-    dispatch(handleNewNote(note));
+    handleSetNewNote(note);
     navigate("/");
   };
 
   return (
     <View style={styles.container}>
-      <NavBar goBack={true}></NavBar>
+      <NavBar goBack={true} filter={false}></NavBar>
 
       <View style={styles.form}>
         <InputWithLabel
@@ -43,9 +55,7 @@ export const CreateNotePage = (): JSX.Element => {
           placeholder="Title..."
           value={formData.title}
           placeholderTextColor={theme.colors.white}
-          onChangeText={(text) => {
-            setFormData({ ...formData, title: text });
-          }}
+          onChangeText={(text) => onInputChange("title", text)}
         ></InputWithLabel>
 
         <InputWithLabel
@@ -53,12 +63,14 @@ export const CreateNotePage = (): JSX.Element => {
           placeholder="Content..."
           value={formData.content}
           placeholderTextColor={theme.colors.white}
-          onChangeText={(text) => {
-            setFormData({ ...formData, content: text });
-          }}
+          onChangeText={(text) => onInputChange("content", text)}
         ></InputWithLabel>
 
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleSubmit}
+          testID="create-note"
+        >
           <Text style={styles.buttonText}>Create</Text>
         </TouchableOpacity>
       </View>

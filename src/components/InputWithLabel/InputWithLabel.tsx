@@ -1,7 +1,21 @@
-import React from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
-import { InputWithLabelProps } from "../../types/types";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  DimensionValue,
+} from "react-native";
+
 import { theme } from "../../theme/theme";
+
+interface InputWithLabelProps {
+  label: string;
+  placeholder: string;
+  value: string;
+  inputHeight?: DimensionValue;
+  placeholderTextColor?: string;
+  onChangeText: (text: string) => void;
+}
 
 export const InputWithLabel = ({
   label,
@@ -20,6 +34,7 @@ export const InputWithLabel = ({
         onChangeText={onChangeText}
         value={value}
         placeholderTextColor={placeholderTextColor}
+        testID={`input-${label}`}
       ></TextInput>
     </View>
   );

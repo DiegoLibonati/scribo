@@ -1,28 +1,34 @@
-import React from "react";
 import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
+
 import { Note } from "../Note/Note";
-import { useSelector } from "react-redux";
-import { RootState } from "../../types/types";
+
+import { useNotesStore } from "../../hooks/useNotesStore";
 import { theme } from "../../theme/theme";
 
 export const NotesList = (): JSX.Element => {
-  const { notes, notesFiltered, isFiltering } = useSelector(
-    (state: RootState) => state.notes
-  );
+  const { notes, notesFiltered, isFiltering } = useNotesStore();
 
   return (
     <SafeAreaView style={styles.container}>
       {!notes.length && !isFiltering && (
-        <Text style={styles.notFoundNotes}>Todavia no tenes notas creadas</Text>
+        <Text style={styles.notFoundNotes}>You still don't have notes created.</Text>
       )}
 
       {isFiltering && !notesFiltered.length ? (
-        <Text style={styles.notFoundNotes}>No se encontraron notas</Text>
+        <Text style={styles.notFoundNotes}>No notes found.</Text>
       ) : (
         <FlatList
           numColumns={2}
           data={notesFiltered.length ? notesFiltered : notes}
-          renderItem={({ item }) => <Note key={item.id} {...item}></Note>}
+          renderItem={({ item }) => (
+            <Note
+              key={item.id}
+              id={item.id}
+              date={item.date}
+              title={item.title}
+              content={item.content}
+            ></Note>
+          )}
         ></FlatList>
       )}
     </SafeAreaView>

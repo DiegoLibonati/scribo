@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
-import { handleFilter, handleIsFiltering } from "../../slices/notes/notesSlice";
-import { useDispatch } from "react-redux";
+
+import { useNotesStore } from "../../hooks/useNotesStore";
 import { theme } from "../../theme/theme";
 
 export const Search = (): JSX.Element => {
-  const dispatch = useDispatch();
+  const { handleSetNotesFiltered } = useNotesStore();
 
   const [valueFilter, setValueFilter] = useState<string>("");
 
   useEffect(() => {
-    dispatch(handleFilter({ valueFilter }));
-    dispatch(handleIsFiltering({ valueFilter }));
+    handleSetNotesFiltered(valueFilter);
   }, [valueFilter]);
 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.searchInput}
-        placeholder="Search note.."
+        placeholder="Search note..."
         onChangeText={setValueFilter}
         value={valueFilter}
         placeholderTextColor={theme.colors.white}
+        testID="search-input"
       ></TextInput>
     </View>
   );

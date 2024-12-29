@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UiState } from "../../types/types";
+import { UiState } from "../../entities/entities";
 
-// Define the initial state using that type
 const initialState: UiState = {
   modal: {
     isOpen: false,
@@ -10,20 +9,17 @@ const initialState: UiState = {
 
 export const uiSlice = createSlice({
   name: "ui",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    handleOpenModal: (state) => {
+    openModal: (state) => {
       state.modal.isOpen = true;
-      return;
     },
-    handleCloseModal: (state) => {
+    closeModal: (state) => {
       state.modal.isOpen = false;
-      return;
     },
   },
 });
 
-export const { handleOpenModal, handleCloseModal } = uiSlice.actions;
+export const { openModal, closeModal } = uiSlice.actions;
 
 export default uiSlice.reducer;

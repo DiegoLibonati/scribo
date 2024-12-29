@@ -1,48 +1,51 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Modal,
-  Pressable,
-  Dimensions,
-} from "react-native";
-import { useSelector } from "react-redux";
-import { NoteFilter, RootState } from "../../types/types";
-import { useDispatch } from "react-redux";
-import { handleCloseModal } from "../../slices/ui/uiSlice";
+import { StyleSheet, Text, View, Modal, Pressable } from "react-native";
+
+import { Filter } from "../../entities/entities";
+
 import { Checkbox } from "../Checkbox/Checkbox";
-import { handleChangeFilter } from "../../slices/notes/notesSlice";
+
+import { useUiStore } from "../../hooks/useUiStore";
+import { useNotesStore } from "../../hooks/useNotesStore";
+
 import { theme } from "../../theme/theme";
 
-export const Dialog = (): JSX.Element => {
-  const { filters } = useSelector((state: RootState) => state.notes);
-  const { modal } = useSelector((state: RootState) => state.ui);
-  const dispatch = useDispatch();
+export const DialogFilter = (): JSX.Element => {
+  const { filters, handleFilterChange } = useNotesStore();
+  const { modal, handleCloseModal } = useUiStore();
 
-  const handleCheckbox = (name: string): void => {
-    dispatch(handleChangeFilter({ name }));
-    return;
+  const handlePressCheckbox = (id: string): void => {
+    handleFilterChange(id);
+  };
+
+  const handlePressCloseModal = (): void => {
+    handleCloseModal();
   };
 
   return (
-    <Modal animationType="fade" transparent={true} visible={modal.isOpen}>
+    <Modal
+      animationType="fade"
+      transparent={true}
+      visible={modal.isOpen}
+      testID="dialog-filter"
+    >
       <View style={styles.centeredView}>
         <View style={styles.modal}>
           <Text style={styles.textModal}>Filter by</Text>
-          {filters.map((filter: NoteFilter) => {
+          {filters.map((filter: Filter) => {
             return (
               <Checkbox
                 key={filter.id}
+                id={filter.id}
                 name={filter.name}
                 active={filter.isActive}
-                onPress={handleCheckbox}
+                onPress={handlePressCheckbox}
               ></Checkbox>
             );
           })}
           <Pressable
-            onPress={() => dispatch(handleCloseModal())}
+            onPress={handlePressCloseModal}
             style={styles.buttonModal}
+            testID="pressable-close-dialog"
           >
             <Text style={styles.textButtonModal}>Close</Text>
           </Pressable>

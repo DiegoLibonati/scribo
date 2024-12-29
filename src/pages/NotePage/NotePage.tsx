@@ -1,47 +1,57 @@
-import { View, StyleSheet } from "react-native";
+import { useState, useEffect } from "react";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigate, useParams } from "react-router-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import Constants from "expo-constants";
-import { getNoteById } from "../../helpers/getNoteById";
+
+import { Note } from "../../entities/entities";
+
 import { NavBar } from "../../components/NavBar/NavBar";
 import { NoteComplete } from "../../components/NoteComplete/NoteComplete";
-import { useSelector } from "react-redux";
-import { Note, RootState } from "../../types/types";
+
+import { useNotesStore } from "../../hooks/useNotesStore";
 import { theme } from "../../theme/theme";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { useDispatch } from "react-redux";
-import { handleRemoveNote } from "../../slices/notes/notesSlice";
-import { useState, useEffect } from "react";
 
 export const NotePage = (): JSX.Element => {
   const [note, setNote] = useState<Note | null>(null);
 
-  const { notes } = useSelector((state: RootState) => state.notes);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { notes, handleRemoveNote } = useNotesStore();
+
   const { idNote } = useParams();
+  const navigate = useNavigate();
+
+  const handlePressRemoveNote = (idNote: string) => {
+    handleRemoveNote(idNote);
+    navigate("/");
+  };
 
   useEffect(() => {
-    if (idNote) {
-      setNote(getNoteById(notes, idNote!));
-    }
+    if (!idNote) return;
+
+    const note = notes.find((note) => note.id === idNote)!;
+
+    if (!note) return navigate("/");
+
+    setNote(note);
   }, [idNote]);
 
   return (
     <View style={styles.container}>
-      <NavBar goBack={true}></NavBar>
+      <NavBar goBack={true} filter={false}></NavBar>
 
-      <NoteComplete {...note!}></NoteComplete>
+      <NoteComplete
+        title={note?.title!}
+        content={note?.content!}
+        date={note?.date!}
+      ></NoteComplete>
 
-      <Ionicons
-        name="close"
-        size={30}
+      <TouchableOpacity
         style={styles.remove}
-        color={theme.colors.white}
-        onPress={() => {
-          dispatch(handleRemoveNote(note!));
-          navigate("/");
-        }}
-      />
+        testID={`remove-note-${note?.id!}`}
+        onPress={() => handlePressRemoveNote(note?.id!)}
+      >
+        <Ionicons name="close" size={30} color={theme.colors.white} />
+      </TouchableOpacity>
     </View>
   );
 };

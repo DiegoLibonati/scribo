@@ -1,36 +1,57 @@
-import { StyleSheet, Text, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigate } from "react-router-native";
-import { NavBarProps } from "../../types/types";
-import { useDispatch } from "react-redux";
-import { handleOpenModal } from "../../slices/ui/uiSlice";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
+import { useUiStore } from "../../hooks/useUiStore";
 import { theme } from "../../theme/theme";
 
-export const NavBar = ({ goBack = false, filter = false }: NavBarProps): JSX.Element => {
+interface NavBarProps {
+  goBack: boolean;
+  filter: boolean;
+}
+
+export const NavBar = ({
+  goBack = false,
+  filter = false,
+}: NavBarProps): JSX.Element => {
+  const { handleOpenModal } = useUiStore();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
+  const handlePressBack = (): void => {
+    navigate("/");
+  };
+
+  const handlePressFilter = (): void => {
+    handleOpenModal();
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.navbarText}>Notes App</Text>
       <View style={styles.shadow} />
+
       {goBack && (
-        <Ionicons
-          name="arrow-back-outline"
-          size={30}
-          style={styles.arrow}
-          color={theme.colors.white}
-          onPress={() => navigate("/")}
-        />
+        <TouchableOpacity
+          onPress={handlePressBack}
+          style={styles.goBack}
+          testID="go-back"
+        >
+          <Ionicons
+            name="arrow-back-outline"
+            size={30}
+            color={theme.colors.white}
+          />
+        </TouchableOpacity>
       )}
+
       {filter && (
-        <Ionicons
-          name="filter"
-          size={30}
+        <TouchableOpacity
+          onPress={handlePressFilter}
           style={styles.filter}
-          color={theme.colors.white}
-          onPress={() => dispatch(handleOpenModal())}
-        />
+          testID="open-filters"
+        >
+          <Ionicons name="filter" size={30} color={theme.colors.white} />
+        </TouchableOpacity>
       )}
     </View>
   );
@@ -61,7 +82,7 @@ const styles = StyleSheet.create({
     opacity: 0.2,
     zIndex: -1,
   },
-  arrow: {
+  goBack: {
     position: "absolute",
     left: 5,
   },
