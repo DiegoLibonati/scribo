@@ -13,19 +13,6 @@ import { theme } from "../../../theme/theme";
 
 type RenderComponent = {} & GlobalTest;
 
-jest.mock("../../../hooks/useUiStore", () => ({
-  ...jest.requireActual("../../../hooks/useUiStore"),
-  useUiStore: jest.fn(),
-}));
-
-jest.mock("../../../hooks/useNotesStore", () => ({
-  ...jest.requireActual("../../../hooks/useNotesStore"),
-  useNotesStore: jest.fn(),
-}));
-
-const mockHandleFilterChange = jest.fn();
-const mockHandleCloseModal = jest.fn();
-
 const renderComponent = (): RenderComponent => {
   const {
     debug,
@@ -54,98 +41,117 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-describe("If modal is open.", () => {
-  const isOpenModal = true;
-  const filters = [
-    { id: "q", name: "Q", isActive: true },
-    { id: "q2", name: "Q2", isActive: false },
-  ];
+jest.mock("../../../hooks/useUiStore", () => ({
+  ...jest.requireActual("../../../hooks/useUiStore"),
+  useUiStore: jest.fn(),
+}));
+jest.mock("../../../hooks/useNotesStore", () => ({
+  ...jest.requireActual("../../../hooks/useNotesStore"),
+  useNotesStore: jest.fn(),
+}));
 
-  beforeEach(() => {
-    (useUiStore as jest.Mock).mockReturnValue({
-      modal: { isOpen: isOpenModal },
-      handleCloseModal: mockHandleCloseModal,
+describe("DialogFilter.tsx", () => {
+  describe("If modal is open.", () => {
+    const mockHandleFilterChange = jest.fn();
+    const mockHandleCloseModal = jest.fn();
+
+    const isOpenModal = true;
+    const filters = [
+      { id: "q", name: "Q", isActive: true },
+      { id: "q2", name: "Q2", isActive: false },
+    ];
+
+    beforeEach(() => {
+      (useUiStore as jest.Mock).mockReturnValue({
+        modal: { isOpen: isOpenModal },
+        handleCloseModal: mockHandleCloseModal,
+      });
+
+      (useNotesStore as jest.Mock).mockReturnValue({
+        filters: filters,
+        handleFilterChange: mockHandleFilterChange,
+      });
     });
 
-    (useNotesStore as jest.Mock).mockReturnValue({
-      filters: filters,
-      handleFilterChange: mockHandleFilterChange,
-    });
-  });
+    test("It must render the title of the Dialog.", () => {
+      const { gets } = renderComponent();
 
-  test("It must render the title of the Dialog.", () => {
-    const { gets } = renderComponent();
+      const title = gets?.getByText!("Filter by");
 
-    const title = gets?.getByText!("Filter by");
-
-    expect(title).toBeTruthy();
-  });
-
-  test("It must render all of the filters. And there should only be a single asset. In addition, it must execute the relevant functions when the pressable is pressed.", () => {
-    const { gets } = renderComponent();
-
-    const activeFilters = filters.filter((filter) => filter.isActive);
-
-    expect(activeFilters).toHaveLength(1);
-
-    const activeFilter = activeFilters[0];
-
-    const checkboxs = gets?.getAllByTestId!("checkbox-root");
-
-    expect(checkboxs).toHaveLength(filters.length);
-
-    const activePressable = gets?.getByTestId!(`pressable-${activeFilter.id}`);
-
-    expect(activePressable).toBeTruthy();
-    expect(activePressable).toHaveStyle({
-      backgroundColor: theme.colors.secondary,
+      expect(title).toBeTruthy();
     });
 
-    fireEvent.press(activePressable);
+    test("It must render all of the filters. And there should only be a single asset. In addition, it must execute the relevant functions when the pressable is pressed.", () => {
+      const { gets } = renderComponent();
 
-    expect(mockHandleFilterChange).toHaveBeenCalledTimes(1);
-    expect(mockHandleFilterChange).toHaveBeenCalledWith(activeFilter.id);
-  });
+      const activeFilters = filters.filter((filter) => filter.isActive);
 
-  test("It must render the pressable to close the dialog with your text. It must also execute the relevant functions when pressed.", () => {
-    const { gets } = renderComponent();
+      expect(activeFilters).toHaveLength(1);
 
-    const closeDialogPressable = gets?.getByTestId!("pressable-close-dialog");
-    const textDialogClose = gets?.getByText!("Close");
+      const activeFilter = activeFilters[0];
 
-    expect(closeDialogPressable).toBeTruthy();
-    expect(textDialogClose).toBeTruthy();
+      const checkboxs = gets?.getAllByTestId!("checkbox-root");
 
-    fireEvent.press(closeDialogPressable);
+      expect(checkboxs).toHaveLength(filters.length);
 
-    expect(mockHandleCloseModal).toHaveBeenCalledTimes(1);
-  });
-});
+      const activePressable = gets?.getByTestId!(
+        `pressable-${activeFilter.id}`
+      );
 
-describe("If modal is close.", () => {
-  const isOpenModal = false;
-  const filters = [
-    { id: "q", name: "Q", isActive: true },
-    { id: "q2", name: "Q2", isActive: false },
-  ];
+      expect(activePressable).toBeTruthy();
+      expect(activePressable).toHaveStyle({
+        backgroundColor: theme.colors.secondary,
+      });
 
-  beforeEach(() => {
-    (useUiStore as jest.Mock).mockReturnValue({
-      modal: { isOpen: isOpenModal },
-      handleCloseModal: mockHandleCloseModal,
+      fireEvent.press(activePressable);
+
+      expect(mockHandleFilterChange).toHaveBeenCalledTimes(1);
+      expect(mockHandleFilterChange).toHaveBeenCalledWith(activeFilter.id);
     });
 
-    (useNotesStore as jest.Mock).mockReturnValue({
-      filters: filters,
-      handleFilterChange: mockHandleFilterChange,
+    test("It must render the pressable to close the dialog with your text. It must also execute the relevant functions when pressed.", () => {
+      const { gets } = renderComponent();
+
+      const closeDialogPressable = gets?.getByTestId!("pressable-close-dialog");
+      const textDialogClose = gets?.getByText!("Close");
+
+      expect(closeDialogPressable).toBeTruthy();
+      expect(textDialogClose).toBeTruthy();
+
+      fireEvent.press(closeDialogPressable);
+
+      expect(mockHandleCloseModal).toHaveBeenCalledTimes(1);
     });
   });
 
-  test("It should not render the dialog", () => {
-    const { querys } = renderComponent();
+  describe("If modal is close.", () => {
+    const mockHandleFilterChange = jest.fn();
+    const mockHandleCloseModal = jest.fn();
 
-    const dialog = querys?.queryByTestId!("dialog-filter");
+    const isOpenModal = false;
+    const filters = [
+      { id: "q", name: "Q", isActive: true },
+      { id: "q2", name: "Q2", isActive: false },
+    ];
 
-    expect(dialog).toBeFalsy();
+    beforeEach(() => {
+      (useUiStore as jest.Mock).mockReturnValue({
+        modal: { isOpen: isOpenModal },
+        handleCloseModal: mockHandleCloseModal,
+      });
+
+      (useNotesStore as jest.Mock).mockReturnValue({
+        filters: filters,
+        handleFilterChange: mockHandleFilterChange,
+      });
+    });
+
+    test("It should not render the dialog", () => {
+      const { querys } = renderComponent();
+
+      const dialog = querys?.queryByTestId!("dialog-filter");
+
+      expect(dialog).toBeFalsy();
+    });
   });
 });

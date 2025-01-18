@@ -47,53 +47,57 @@ const renderComponent = ({ active }: RenderComponentProps): RenderComponent => {
   };
 };
 
-describe("If active is true.", () => {
-  const active = true;
+describe("Checkbox.tsx", () => {
+  describe("If active is true.", () => {
+    const active = true;
 
-  test("It must render the pressable with the appropriate style.", () => {
-    const { props, gets } = renderComponent({ active: active });
+    test("It must render the pressable with the appropriate style.", () => {
+      const { props, gets } = renderComponent({ active: active });
 
-    const pressable = gets?.getByTestId!(`pressable-${props.id}`);
+      const pressable = gets?.getByTestId!(`pressable-${props.id}`);
 
-    expect(pressable).toBeTruthy();
-    expect(pressable).toHaveStyle({ backgroundColor: theme.colors.secondary });
-  });
-});
-
-describe("If active is false.", () => {
-  const active = false;
-
-  test("It must render the pressable with the appropriate style.", () => {
-    const { props, gets } = renderComponent({ active: active });
-
-    const pressable = gets?.getByTestId!(`pressable-${props.id}`);
-
-    expect(pressable).toBeTruthy();
-    expect(pressable).toHaveStyle({ backgroundColor: theme.colors.white });
-  });
-});
-
-describe("General Tests.", () => {
-  test("It must render the pressable and the text.", () => {
-    const { props, gets } = renderComponent({ active: false });
-
-    const pressable = gets?.getByTestId!(`pressable-${props.id}`);
-    const text = gets?.getByText!(props.name);
-
-    expect(pressable).toBeTruthy();
-    expect(text).toBeTruthy();
+      expect(pressable).toBeTruthy();
+      expect(pressable).toHaveStyle({
+        backgroundColor: theme.colors.secondary,
+      });
+    });
   });
 
-  test("It should run the onPress function when the pressable is clicked.", () => {
-    const { props, gets } = renderComponent({ active: false });
+  describe("If active is false.", () => {
+    const active = false;
 
-    const pressable = gets?.getByTestId!(`pressable-${props.id}`);
+    test("It must render the pressable with the appropriate style.", () => {
+      const { props, gets } = renderComponent({ active: active });
 
-    expect(pressable).toBeTruthy();
+      const pressable = gets?.getByTestId!(`pressable-${props.id}`);
 
-    fireEvent.press(pressable);
+      expect(pressable).toBeTruthy();
+      expect(pressable).toHaveStyle({ backgroundColor: theme.colors.white });
+    });
+  });
 
-    expect(props.onPress).toHaveBeenCalledTimes(1);
-    expect(props.onPress).toHaveBeenCalledWith(props.id);
+  describe("General Tests.", () => {
+    test("It must render the pressable and the text.", () => {
+      const { props, gets } = renderComponent({ active: false });
+
+      const pressable = gets?.getByTestId!(`pressable-${props.id}`);
+      const text = gets?.getByText!(props.name);
+
+      expect(pressable).toBeTruthy();
+      expect(text).toBeTruthy();
+    });
+
+    test("It should run the onPress function when the pressable is clicked.", () => {
+      const { props, gets } = renderComponent({ active: false });
+
+      const pressable = gets?.getByTestId!(`pressable-${props.id}`);
+
+      expect(pressable).toBeTruthy();
+
+      fireEvent.press(pressable);
+
+      expect(props.onPress).toHaveBeenCalledTimes(1);
+      expect(props.onPress).toHaveBeenCalledWith(props.id);
+    });
   });
 });

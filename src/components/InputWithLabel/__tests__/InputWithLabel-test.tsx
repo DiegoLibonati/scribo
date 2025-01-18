@@ -6,8 +6,6 @@ import { GlobalTest } from "../../../entities/entities";
 
 import { InputWithLabel } from "../InputWithLabel";
 
-import { theme } from "../../../theme/theme";
-
 type RenderComponent = {
   props: {
     label: string;
@@ -51,40 +49,46 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-test("It must render the label and the input.", () => {
-  const { props, gets } = renderComponent();
+describe("InputWithLabel.tsx", () => {
+  describe("General Tests.", () => {
+    test("It must render the label and the input.", () => {
+      const { props, gets } = renderComponent();
 
-  const label = gets?.getByText!(props.label);
-  const input = gets?.getByTestId!(`input-${props.label}`);
+      const label = gets?.getByText!(props.label);
+      const input = gets?.getByTestId!(`input-${props.label}`);
 
-  expect(label).toBeTruthy();
-  expect(input).toBeTruthy();
-});
+      expect(label).toBeTruthy();
+      expect(input).toBeTruthy();
+    });
 
-test("It must render the input with the height entered by props.", () => {
-  const { props, gets } = renderComponent();
+    test("It must render the input with the height entered by props.", () => {
+      const { props, gets } = renderComponent();
 
-  const input = gets?.getByTestId!(`input-${props.label}`);
+      const input = gets?.getByTestId!(`input-${props.label}`);
 
-  expect(input).toBeTruthy();
-  expect(input).toHaveStyle({ height: props.inputHeight });
-});
+      expect(input).toBeTruthy();
+      expect(input).toHaveStyle({ height: props.inputHeight });
+    });
 
-test("It must execute the onChangeText function when the value of the input is changed.", () => {
-  const { props, gets } = renderComponent();
+    test("It must execute the onChangeText function when the value of the input is changed.", () => {
+      const { props, gets } = renderComponent();
 
-  const input = gets?.getByTestId!(`input-${props.label}`);
+      const input = gets?.getByTestId!(`input-${props.label}`);
 
-  fireEvent.changeText(input);
+      fireEvent.changeText(input);
 
-  expect(props.mockOnChangeText).toHaveBeenCalledTimes(1);
-});
+      expect(props.mockOnChangeText).toHaveBeenCalledTimes(1);
+    });
 
-test("It should render the placeholder and the placeholder color entered by props.", () => {
-  const { props, gets } = renderComponent();
+    test("It should render the placeholder and the placeholder color entered by props.", () => {
+      const { props, gets } = renderComponent();
 
-  const input = gets?.getByTestId!(`input-${props.label}`);
+      const input = gets?.getByTestId!(`input-${props.label}`);
 
-  expect(input.props.placeholder).toEqual(props.placeholder);
-  expect(input.props.placeholderTextColor).toEqual(props.placeholderTextColor);
+      expect(input.props.placeholder).toEqual(props.placeholder);
+      expect(input.props.placeholderTextColor).toEqual(
+        props.placeholderTextColor
+      );
+    });
+  });
 });

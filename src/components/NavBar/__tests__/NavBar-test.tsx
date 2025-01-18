@@ -17,13 +17,6 @@ interface RenderComponentProps {
   filter: boolean;
 }
 
-jest.mock("../../../hooks/useUiStore", () => ({
-  ...jest.requireActual("../../../hooks/useUiStore"),
-  useUiStore: jest.fn(),
-}));
-
-const mockHandleOpenModal = jest.fn();
-
 const renderComponent = ({
   goBack,
   filter,
@@ -59,58 +52,69 @@ const renderComponent = ({
   };
 };
 
-describe("If goBack is true.", () => {
-  const goBack = true;
+jest.mock("../../../hooks/useUiStore", () => ({
+  ...jest.requireActual("../../../hooks/useUiStore"),
+  useUiStore: jest.fn(),
+}));
 
-  beforeEach(() => {
-    (useUiStore as jest.Mock).mockReturnValue({
-      handleOpenModal: mockHandleOpenModal,
+describe("Navbar.tsx", () => {
+  describe("If goBack is true.", () => {
+    const mockHandleOpenModal = jest.fn();
+    const goBack = true;
+
+    beforeEach(() => {
+      (useUiStore as jest.Mock).mockReturnValue({
+        handleOpenModal: mockHandleOpenModal,
+      });
+    });
+
+    test("It must render the button to go back.", () => {
+      const { gets } = renderComponent({ goBack: goBack, filter: false });
+
+      const touchableGoBack = gets?.getByTestId!("go-back");
+
+      expect(touchableGoBack).toBeTruthy();
     });
   });
 
-  test("It must render the button to go back.", () => {
-    const { gets } = renderComponent({ goBack: goBack, filter: false });
+  describe("If filter is true.", () => {
+    const mockHandleOpenModal = jest.fn();
+    const filter = true;
 
-    const touchableGoBack = gets?.getByTestId!("go-back");
+    beforeEach(() => {
+      (useUiStore as jest.Mock).mockReturnValue({
+        handleOpenModal: mockHandleOpenModal,
+      });
+    });
 
-    expect(touchableGoBack).toBeTruthy();
-  });
-});
+    test("It must render the button to open the filters modal and also when pressed it must execute the relevant functions.", () => {
+      const { gets } = renderComponent({ goBack: false, filter: filter });
 
-describe("If filter is true.", () => {
-  const filter = true;
+      const touchableFilters = gets?.getByTestId!("open-filters");
 
-  beforeEach(() => {
-    (useUiStore as jest.Mock).mockReturnValue({
-      handleOpenModal: mockHandleOpenModal,
+      expect(touchableFilters).toBeTruthy();
+
+      fireEvent.press(touchableFilters);
+
+      expect(mockHandleOpenModal).toHaveBeenCalledTimes(1);
     });
   });
 
-  test("It must render the button to open the filters modal and also when pressed it must execute the relevant functions.", () => {
-    const { gets } = renderComponent({ goBack: false, filter: filter });
+  describe("General Tests.", () => {
+    const mockHandleOpenModal = jest.fn();
 
-    const touchableFilters = gets?.getByTestId!("open-filters");
-
-    expect(touchableFilters).toBeTruthy();
-
-    fireEvent.press(touchableFilters);
-
-    expect(mockHandleOpenModal).toHaveBeenCalledTimes(1);
-  });
-});
-
-describe("General Tests.", () => {
-  beforeEach(() => {
-    (useUiStore as jest.Mock).mockReturnValue({
-      handleOpenModal: mockHandleOpenModal,
+    beforeEach(() => {
+      (useUiStore as jest.Mock).mockReturnValue({
+        handleOpenModal: mockHandleOpenModal,
+      });
     });
-  });
 
-  test("It must render the title.", () => {
-    const { gets } = renderComponent({ goBack: false, filter: false });
+    test("It must render the title.", () => {
+      const { gets } = renderComponent({ goBack: false, filter: false });
 
-    const title = gets?.getByText!("Notes App");
+      const title = gets?.getByText!("Notes App");
 
-    expect(title).toBeTruthy();
+      expect(title).toBeTruthy();
+    });
   });
 });

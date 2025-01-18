@@ -12,26 +12,8 @@ import { store } from "../../../slices/store";
 
 type RenderComponent = {} & GlobalTest;
 
-jest.mock("../../../hooks/useNotesStore", () => ({
-  ...jest.requireActual("../../../hooks/useNotesStore"),
-  useNotesStore: jest.fn(),
-}));
-
-const mockHandleRemoveNote = jest.fn();
-
 const idNote = "1";
 const currentPath = `/${idNote}`;
-const notes: Note[] = [
-  { id: "1", content: "pepe", date: "asd", title: "12345" },
-];
-const currentNote = notes.find((note) => note.id === idNote);
-
-beforeEach(() => {
-  (useNotesStore as jest.Mock).mockReturnValue({
-    notes: notes,
-    handleRemoveNote: mockHandleRemoveNote,
-  });
-});
 
 const renderComponent = (): RenderComponent => {
   const {
@@ -77,37 +59,60 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-test("It must render the navbar and the goBack button.", () => {
-  const { gets } = renderComponent();
+jest.mock("../../../hooks/useNotesStore", () => ({
+  ...jest.requireActual("../../../hooks/useNotesStore"),
+  useNotesStore: jest.fn(),
+}));
 
-  const titleNavBar = gets?.getByText!("Notes App");
-  const touchableGoBack = gets?.getByTestId!("go-back");
+describe("NotePage.tsx", () => {
+  describe("General Tests.", () => {
+    const notes: Note[] = [
+      { id: "1", content: "pepe", date: "asd", title: "12345" },
+    ];
+    const currentNote = notes.find((note) => note.id === idNote);
 
-  expect(titleNavBar).toBeTruthy();
-  expect(touchableGoBack).toBeTruthy();
-});
+    const mockHandleRemoveNote = jest.fn();
 
-test("It must render the date, title and content of the note.", () => {
-  const { gets } = renderComponent();
+    beforeEach(() => {
+      (useNotesStore as jest.Mock).mockReturnValue({
+        notes: notes,
+        handleRemoveNote: mockHandleRemoveNote,
+      });
+    });
 
-  const date = gets?.getByText!(currentNote?.date!);
-  const title = gets?.getByText!(currentNote?.title!);
-  const content = gets?.getByText!(currentNote?.content!);
+    test("It must render the navbar and the goBack button.", () => {
+      const { gets } = renderComponent();
 
-  expect(date).toBeTruthy();
-  expect(title).toBeTruthy();
-  expect(content).toBeTruthy();
-});
+      const titleNavBar = gets?.getByText!("Notes App");
+      const touchableGoBack = gets?.getByTestId!("go-back");
 
-test("It must render the remove note button and also execute the relevant functions when it is pressed.", () => {
-  const { gets } = renderComponent();
+      expect(titleNavBar).toBeTruthy();
+      expect(touchableGoBack).toBeTruthy();
+    });
 
-  const touchableRemoveNote = gets?.getByTestId!(/remove-note-/i);
+    test("It must render the date, title and content of the note.", () => {
+      const { gets } = renderComponent();
 
-  expect(touchableRemoveNote).toBeTruthy();
+      const date = gets?.getByText!(currentNote?.date!);
+      const title = gets?.getByText!(currentNote?.title!);
+      const content = gets?.getByText!(currentNote?.content!);
 
-  fireEvent.press(touchableRemoveNote);
+      expect(date).toBeTruthy();
+      expect(title).toBeTruthy();
+      expect(content).toBeTruthy();
+    });
 
-  expect(mockHandleRemoveNote).toHaveBeenCalledTimes(1);
-  expect(mockHandleRemoveNote).toHaveBeenCalledWith(idNote);
+    test("It must render the remove note button and also execute the relevant functions when it is pressed.", () => {
+      const { gets } = renderComponent();
+
+      const touchableRemoveNote = gets?.getByTestId!(/remove-note-/i);
+
+      expect(touchableRemoveNote).toBeTruthy();
+
+      fireEvent.press(touchableRemoveNote);
+
+      expect(mockHandleRemoveNote).toHaveBeenCalledTimes(1);
+      expect(mockHandleRemoveNote).toHaveBeenCalledWith(idNote);
+    });
+  });
 });

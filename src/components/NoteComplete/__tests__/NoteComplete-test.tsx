@@ -38,14 +38,18 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-test("It must render the date, title and content of the note.", () => {
-  const { gets, props } = renderComponent();
+describe("NoteComplete.tsx", () => {
+  describe("General Tests.", () => {
+    test("It must render the date, title and content of the note.", () => {
+      const { gets, props } = renderComponent();
 
-  const date = gets?.getByText!(props.date);
-  const title = gets?.getByText!(props.title);
-  const content = gets?.getByText!(props.content);
+      const date = gets?.getByText!(props.date);
+      const title = gets?.getByText!(props.title);
+      const content = gets?.getByText!(props.content);
 
-  expect(date).toBeTruthy();
-  expect(title).toBeTruthy();
-  expect(content).toBeTruthy();
+      expect(date).toBeTruthy();
+      expect(title).toBeTruthy();
+      expect(content).toBeTruthy();
+    });
+  });
 });
