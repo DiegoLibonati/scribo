@@ -45,6 +45,7 @@ This native application is a notepad. It allows you to add notes, view these not
 "@types/react": "~18.3.12"
 "jest": "^29.7.0"
 "jest-expo": "^52.0.0"
+"react-test-renderer": "^18.3.1"
 "typescript": "^5.1.3"
 ```
 
