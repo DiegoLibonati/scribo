@@ -1,10 +1,10 @@
 import { render, fireEvent } from "@testing-library/react-native";
 
-import { GlobalTest } from "../../../entities/entities";
+import { GlobalTest } from "@src/entities/entities";
 
-import { Checkbox } from "../Checkbox";
+import { Checkbox } from "@src/components/Checkbox/Checkbox";
 
-import { theme } from "../../../theme/theme";
+import { theme } from "@src/theme/theme";
 
 type RenderComponent = {
   props: {

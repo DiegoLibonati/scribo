@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UiState } from "../../entities/entities";
+import { UiState } from "@src/entities/entities";
 
 const initialState: UiState = {
   modal: {

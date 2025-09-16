@@ -2,14 +2,14 @@ import { render, fireEvent } from "@testing-library/react-native";
 
 import { Provider } from "react-redux";
 
-import { GlobalTest } from "../../../entities/entities";
+import { GlobalTest } from "@src/entities/entities";
 
-import { DialogFilter } from "../DialogFilter";
+import { DialogFilter } from "@src/components/DialogFilter/DialogFilter";
 
-import { useUiStore } from "../../../hooks/useUiStore";
-import { useNotesStore } from "../../../hooks/useNotesStore";
-import { store } from "../../../slices/store";
-import { theme } from "../../../theme/theme";
+import { useUiStore } from "@src/hooks/useUiStore";
+import { useNotesStore } from "@src/hooks/useNotesStore";
+import { store } from "@src/slices/store";
+import { theme } from "@src/theme/theme";
 
 type RenderComponent = {} & GlobalTest;
 
@@ -41,12 +41,12 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-jest.mock("../../../hooks/useUiStore", () => ({
-  ...jest.requireActual("../../../hooks/useUiStore"),
+jest.mock("@src/hooks/useUiStore", () => ({
+  ...jest.requireActual("@src/hooks/useUiStore"),
   useUiStore: jest.fn(),
 }));
-jest.mock("../../../hooks/useNotesStore", () => ({
-  ...jest.requireActual("../../../hooks/useNotesStore"),
+jest.mock("@src/hooks/useNotesStore", () => ({
+  ...jest.requireActual("@src/hooks/useNotesStore"),
   useNotesStore: jest.fn(),
 }));
 

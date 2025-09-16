@@ -1,5 +1,11 @@
 # Notes Native
 
+## Educational Purpose
+
+This project was created primarily for **educational and learning purposes**.  
+While it is well-structured and could technically be used in production, it is **not intended for commercialization**.  
+The main goal is to explore and demonstrate best practices, patterns, and technologies in software development.
+
 ## Getting Started
 
 1. Clone the repository on your computer using: `git clone URL`.
@@ -25,11 +31,15 @@ This native application is a notepad. It allows you to add notes, view these not
 #### Dependencies
 
 ```
+"@expo/vector-icons": "^15.0.2"
 "@reduxjs/toolkit": "^2.5.0"
-"expo": "^52.0.0"
-"expo-status-bar": "~2.0.0"
-"react": "18.3.1"
-"react-native": "0.76.5"
+"expo": "^54.0.0"
+"expo-asset": "^12.0.8"
+"expo-constants": "^18.0.9"
+"expo-font": "^14.0.8"
+"expo-status-bar": "~3.0.8"
+"react": "19.1.0"
+"react-native": "0.81.4"
 "react-redux": "^9.2.0"
 "react-router-native": "^6.28.1"
 ```
@@ -42,10 +52,13 @@ This native application is a notepad. It allows you to add notes, view these not
 "@testing-library/react-native": "^12.1.2"
 "@types/jest": "^29.5.13"
 "@types/node": "^20.10.6"
-"@types/react": "~18.3.12"
+"@types/react": "~19.1.10"
+"babel-plugin-module-resolver": "^5.0.2"
+"babel-preset-expo": "^54.0.1"
 "jest": "^29.7.0"
-"jest-expo": "^52.0.0"
-"react-test-renderer": "^18.3.1"
+"jest-expo": "~54.0.11"
+"react-test-renderer": "19.1.0"
+"ts-node": "^10.9.2"
 "typescript": "^5.1.3"
 ```
 
@@ -61,3 +74,5 @@ https://user-images.githubusercontent.com/99032604/236560072-28dfdf6f-6cdd-4f96-
 
 1. Join to the correct path of the clone
 2. Execute: `yarn test` or `npm test`
+
+## Known Issues

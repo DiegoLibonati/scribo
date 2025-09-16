@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-native";
 
-import { NotesPage } from "../pages/NotesPage/NotesPage";
-import { NotePage } from "../pages/NotePage/NotePage";
-import { CreateNotePage } from "../pages/CreateNotePage/CreateNotePage";
+import { NotesPage } from "@src/pages/NotesPage/NotesPage";
+import { NotePage } from "@src/pages/NotePage/NotePage";
+import { CreateNotePage } from "@src/pages/CreateNotePage/CreateNotePage";
 
-export const NotesRouter = (): JSX.Element => {
+export const NotesRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<NotesPage></NotesPage>}></Route>

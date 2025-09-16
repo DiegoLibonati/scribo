@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-import { Note, NotesState } from "../../entities/entities";
+import { Note, NotesState } from "@src/entities/entities";
 
 const initialState: NotesState = {
   notes: [],

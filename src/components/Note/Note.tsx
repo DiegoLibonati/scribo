@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
 import { useNavigate } from "react-router-native";
 
-import { theme } from "../../theme/theme";
+import { theme } from "@src/theme/theme";
 
 interface NoteProps {
   id: string;
@@ -10,7 +10,7 @@ interface NoteProps {
   content: string;
 }
 
-export const Note = ({ id, date, title, content }: NoteProps): JSX.Element => {
+export const Note = ({ id, date, title, content }: NoteProps) => {
   const navigate = useNavigate();
 
   const handlePressNote = (): void => {

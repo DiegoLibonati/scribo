@@ -1,19 +1,16 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigate } from "react-router-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 
-import { useUiStore } from "../../hooks/useUiStore";
-import { theme } from "../../theme/theme";
+import { useUiStore } from "@src/hooks/useUiStore";
+import { theme } from "@src/theme/theme";
 
 interface NavBarProps {
   goBack: boolean;
   filter: boolean;
 }
 
-export const NavBar = ({
-  goBack = false,
-  filter = false,
-}: NavBarProps): JSX.Element => {
+export const NavBar = ({ goBack = false, filter = false }: NavBarProps) => {
   const { handleOpenModal } = useUiStore();
   const navigate = useNavigate();
 

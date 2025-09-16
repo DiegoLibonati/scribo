@@ -3,12 +3,12 @@ import { fireEvent, render } from "@testing-library/react-native";
 import { MemoryRouter } from "react-router-native";
 import { Provider } from "react-redux";
 
-import { GlobalTest } from "../../../entities/entities";
+import { GlobalTest } from "@src/entities/entities";
 
-import { CreateNotePage } from "../CreateNotePage";
+import { CreateNotePage } from "@src/pages/CreateNotePage/CreateNotePage";
 
-import { store } from "../../../slices/store";
-import { useNotesStore } from "../../../hooks/useNotesStore";
+import { store } from "@src/slices/store";
+import { useNotesStore } from "@src/hooks/useNotesStore";
 
 type RenderComponent = {} & GlobalTest;
 
@@ -47,8 +47,8 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-jest.mock("../../../hooks/useNotesStore", () => ({
-  ...jest.requireActual("../../../hooks/useNotesStore"),
+jest.mock("@src/hooks/useNotesStore", () => ({
+  ...jest.requireActual("@src/hooks/useNotesStore"),
   useNotesStore: jest.fn(),
 }));
 

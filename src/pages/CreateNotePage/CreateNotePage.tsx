@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-native";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import Constants from "expo-constants";
 
-import { Note } from "../../entities/entities";
+import { Note } from "@src/entities/entities";
 
-import { NavBar } from "../../components/NavBar/NavBar";
-import { InputWithLabel } from "../../components/InputWithLabel/InputWithLabel";
+import { NavBar } from "@src/components/NavBar/NavBar";
+import { InputWithLabel } from "@src/components/InputWithLabel/InputWithLabel";
 
-import { useNotesStore } from "../../hooks/useNotesStore";
-import { theme } from "../../theme/theme";
+import { useNotesStore } from "@src/hooks/useNotesStore";
+import { theme } from "@src/theme/theme";
 
-export const CreateNotePage = (): JSX.Element => {
+export const CreateNotePage = () => {
   const [formData, setFormData] = useState<Pick<Note, "title" | "content">>({
     title: "",
     content: "",

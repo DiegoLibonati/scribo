@@ -6,7 +6,7 @@ import {
   DimensionValue,
 } from "react-native";
 
-import { theme } from "../../theme/theme";
+import { theme } from "@src/theme/theme";
 
 interface InputWithLabelProps {
   label: string;
@@ -24,7 +24,7 @@ export const InputWithLabel = ({
   value,
   placeholderTextColor,
   onChangeText,
-}: InputWithLabelProps): JSX.Element => {
+}: InputWithLabelProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>

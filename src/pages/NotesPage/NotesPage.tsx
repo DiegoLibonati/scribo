@@ -1,16 +1,16 @@
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigate } from "react-router-native";
 import Constants from "expo-constants";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 
-import { NavBar } from "../../components/NavBar/NavBar";
-import { Search } from "../../components/Search/Search";
-import { NotesList } from "../../components/NotesList/NotesList";
-import { DialogFilter } from "../../components/DialogFilter/DialogFilter";
+import { NavBar } from "@src/components/NavBar/NavBar";
+import { Search } from "@src/components/Search/Search";
+import { NotesList } from "@src/components/NotesList/NotesList";
+import { DialogFilter } from "@src/components/DialogFilter/DialogFilter";
 
-import { theme } from "../../theme/theme";
+import { theme } from "@src/theme/theme";
 
-export const NotesPage = (): JSX.Element => {
+export const NotesPage = () => {
   const navigate = useNavigate();
 
   const handlePressCreateNewNote = () => {

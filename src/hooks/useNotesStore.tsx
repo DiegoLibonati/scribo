@@ -1,12 +1,12 @@
-import { Note, Filter } from "../entities/entities";
+import { Note, Filter } from "@src/entities/entities";
 
-import { useAppDispatch, useAppSelector } from "../constants/redux";
+import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 import {
   filterChange,
   newNote,
   removeNote,
   setNotesFiltered,
-} from "../slices/notes/notesSlice";
+} from "@src/slices/notes/notesSlice";
 
 type UseNotesStore = {
   notes: Note[];

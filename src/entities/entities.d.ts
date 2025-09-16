@@ -1,4 +1,4 @@
-import { store } from "../slices/store";
+import { store } from "@src/slices/store";
 
 import { DebugFunction } from "@testing-library/react-native";
 import {

@@ -1,6 +1,6 @@
 import { View, Pressable, Text, StyleSheet } from "react-native";
 
-import { theme } from "../../theme/theme";
+import { theme } from "@src/theme/theme";
 
 interface CheckboxProps {
   id: string;
@@ -9,12 +9,7 @@ interface CheckboxProps {
   onPress: (name: string) => void;
 }
 
-export const Checkbox = ({
-  id,
-  name,
-  active,
-  onPress,
-}: CheckboxProps): JSX.Element => {
+export const Checkbox = ({ id, name, active, onPress }: CheckboxProps) => {
   return (
     <View style={styles.checkboxContainer} testID="checkbox-root">
       <Pressable

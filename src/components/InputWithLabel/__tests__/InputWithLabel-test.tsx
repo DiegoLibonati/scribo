@@ -2,9 +2,9 @@ import { render, fireEvent } from "@testing-library/react-native";
 
 import { DimensionValue } from "react-native";
 
-import { GlobalTest } from "../../../entities/entities";
+import { GlobalTest } from "@src/entities/entities";
 
-import { InputWithLabel } from "../InputWithLabel";
+import { InputWithLabel } from "@src/components/InputWithLabel/InputWithLabel";
 
 type RenderComponent = {
   props: {

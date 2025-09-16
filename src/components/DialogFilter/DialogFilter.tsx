@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View, Modal, Pressable } from "react-native";
 
-import { Filter } from "../../entities/entities";
+import { Filter } from "@src/entities/entities";
 
-import { Checkbox } from "../Checkbox/Checkbox";
+import { Checkbox } from "@src/components/Checkbox/Checkbox";
 
-import { useUiStore } from "../../hooks/useUiStore";
-import { useNotesStore } from "../../hooks/useNotesStore";
+import { useUiStore } from "@src/hooks/useUiStore";
+import { useNotesStore } from "@src/hooks/useNotesStore";
 
-import { theme } from "../../theme/theme";
+import { theme } from "@src/theme/theme";
 
-export const DialogFilter = (): JSX.Element => {
+export const DialogFilter = () => {
   const { filters, handleFilterChange } = useNotesStore();
   const { modal, handleCloseModal } = useUiStore();
 

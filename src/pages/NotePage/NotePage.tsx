@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigate, useParams } from "react-router-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 
-import { Note } from "../../entities/entities";
+import { Note } from "@src/entities/entities";
 
-import { NavBar } from "../../components/NavBar/NavBar";
-import { NoteComplete } from "../../components/NoteComplete/NoteComplete";
+import { NavBar } from "@src/components/NavBar/NavBar";
+import { NoteComplete } from "@src/components/NoteComplete/NoteComplete";
 
-import { useNotesStore } from "../../hooks/useNotesStore";
-import { theme } from "../../theme/theme";
+import { useNotesStore } from "@src/hooks/useNotesStore";
+import { theme } from "@src/theme/theme";
 
-export const NotePage = (): JSX.Element => {
+export const NotePage = () => {
   const [note, setNote] = useState<Note | null>(null);
 
   const { notes, handleRemoveNote } = useNotesStore();

@@ -3,11 +3,11 @@ import { render } from "@testing-library/react-native";
 import { MemoryRouter } from "react-router-native";
 import { Provider } from "react-redux";
 
-import { GlobalTest } from "../../../entities/entities";
+import { GlobalTest } from "@src/entities/entities";
 
-import { NotesPage } from "../NotesPage";
+import { NotesPage } from "@src/pages/NotesPage/NotesPage";
 
-import { store } from "../../../slices/store";
+import { store } from "@src/slices/store";
 
 type RenderComponent = {} & GlobalTest;
 

@@ -3,12 +3,12 @@ import { render, fireEvent } from "@testing-library/react-native";
 import { MemoryRouter } from "react-router-native";
 import { Provider } from "react-redux";
 
-import { GlobalTest } from "../../../entities/entities";
+import { GlobalTest } from "@src/entities/entities";
 
-import { NavBar } from "../NavBar";
+import { NavBar } from "@src/components/NavBar/NavBar";
 
-import { useUiStore } from "../../../hooks/useUiStore";
-import { store } from "../../../slices/store";
+import { useUiStore } from "@src/hooks/useUiStore";
+import { store } from "@src/slices/store";
 
 type RenderComponent = {} & GlobalTest;
 
@@ -52,8 +52,8 @@ const renderComponent = ({
   };
 };
 
-jest.mock("../../../hooks/useUiStore", () => ({
-  ...jest.requireActual("../../../hooks/useUiStore"),
+jest.mock("@src/hooks/useUiStore", () => ({
+  ...jest.requireActual("@src/hooks/useUiStore"),
   useUiStore: jest.fn(),
 }));
 

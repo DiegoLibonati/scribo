@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react-native";
 
-import { GlobalTest } from "../../../entities/entities";
+import { GlobalTest } from "@src/entities/entities";
 
-import { NoteComplete } from "../NoteComplete";
+import { NoteComplete } from "@src/components/NoteComplete/NoteComplete";
 
 type RenderComponent = {
   props: {

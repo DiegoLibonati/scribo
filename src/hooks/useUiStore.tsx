@@ -1,7 +1,7 @@
-import { Modal } from "../entities/entities";
+import { Modal } from "@src/entities/entities";
 
-import { closeModal, openModal } from "../slices/ui/uiSlice";
-import { useAppDispatch, useAppSelector } from "../constants/redux";
+import { closeModal, openModal } from "@src/slices/ui/uiSlice";
+import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 
 type UseUiStore = {
   modal: Modal;

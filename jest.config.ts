@@ -1,5 +1,12 @@
-module.exports = {
+import type { Config } from "jest";
+
+const config: Config = {
   preset: "jest-expo",
+  setupFilesAfterEnv: ["<rootDir>/tests/jest.setup.ts"],
+  moduleNameMapper: {
+    "^@src/(.*)$": "<rootDir>/src/$1",
+    "^@tests/(.*)$": "<rootDir>/tests/$1",
+  },
   transformIgnorePatterns: [
     "node_modules/(?!((jest-)?react-native" +
       "|@react-native(-community)?" +
@@ -14,9 +21,10 @@ module.exports = {
       "|@sentry/react-native" +
       "|native-base" +
       "|react-native-svg" +
-      "|@reduxjs/toolkit" +   
-      "|immer" +             
+      "|@reduxjs/toolkit" +
+      "|immer" +
       "))",
   ],
-  setupFilesAfterEnv: ["<rootDir>/tests/jest.setup.ts"],
 };
+
+export default config;

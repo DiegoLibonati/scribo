@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
-import { useNotesStore } from "../../hooks/useNotesStore";
-import { theme } from "../../theme/theme";
+import { useNotesStore } from "@src/hooks/useNotesStore";
+import { theme } from "@src/theme/theme";
 
-export const Search = (): JSX.Element => {
+export const Search = () => {
   const { handleSetNotesFiltered } = useNotesStore();
 
   const [valueFilter, setValueFilter] = useState<string>("");
