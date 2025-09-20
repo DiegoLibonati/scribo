@@ -1,4 +1,5 @@
-import { FlatList, SafeAreaView, StyleSheet, Text } from "react-native";
+import { FlatList, StyleSheet, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Note } from "@src/components/Note/Note";
 

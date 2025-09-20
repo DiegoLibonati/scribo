@@ -40,6 +40,7 @@ This native application is a notepad. It allows you to add notes, view these not
 "expo-status-bar": "~3.0.8"
 "react": "19.1.0"
 "react-native": "0.81.4"
+"react-native-safe-area-context": "^5.6.1"
 "react-redux": "^9.2.0"
 "react-router-native": "^6.28.1"
 ```
