@@ -2,7 +2,7 @@ import { View, Text, TextInput, StyleSheet } from "react-native";
 
 import { InputWithLabelProps } from "@src/entities/props";
 
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 export const InputWithLabel = ({
   label,

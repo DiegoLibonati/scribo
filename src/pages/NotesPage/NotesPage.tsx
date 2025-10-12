@@ -8,7 +8,7 @@ import { Search } from "@src/components/Search/Search";
 import { NotesList } from "@src/components/NotesList/NotesList";
 import { DialogFilter } from "@src/components/DialogFilter/DialogFilter";
 
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 export const NotesPage = () => {
   const navigate = useNavigate();

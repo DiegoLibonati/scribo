@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-native";
 
 import { NoteProps } from "@src/entities/props";
 
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 export const Note = ({ id, date, title, content }: NoteProps) => {
   const navigate = useNavigate();

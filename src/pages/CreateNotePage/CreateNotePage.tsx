@@ -9,7 +9,7 @@ import { NavBar } from "@src/components/NavBar/NavBar";
 import { InputWithLabel } from "@src/components/InputWithLabel/InputWithLabel";
 
 import { useNotesStore } from "@src/hooks/useNotesStore";
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 export const CreateNotePage = () => {
   const [formData, setFormData] = useState<Pick<Note, "title" | "content">>({

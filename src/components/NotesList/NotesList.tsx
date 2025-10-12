@@ -5,7 +5,7 @@ import { Note } from "@src/components/Note/Note";
 
 import { useNotesStore } from "@src/hooks/useNotesStore";
 
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 export const NotesList = () => {
   const { notes, notesFiltered, isFiltering } = useNotesStore();

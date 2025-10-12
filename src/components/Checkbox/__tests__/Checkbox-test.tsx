@@ -5,7 +5,7 @@ import { CheckboxProps } from "@src/entities/props";
 
 import { Checkbox } from "@src/components/Checkbox/Checkbox";
 
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 type RenderComponent = {
   props: {

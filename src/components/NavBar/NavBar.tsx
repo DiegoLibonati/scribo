@@ -6,7 +6,7 @@ import { NavBarProps } from "@src/entities/props";
 
 import { useUiStore } from "@src/hooks/useUiStore";
 
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 export const NavBar = ({ goBack = false, filter = false }: NavBarProps) => {
   const { handleOpenModal } = useUiStore();

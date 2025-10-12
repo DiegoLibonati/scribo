@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, View } from "react-native";
 
 import { useNotesStore } from "@src/hooks/useNotesStore";
 
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 export const Search = () => {
   const { handleSetNotesFiltered } = useNotesStore();

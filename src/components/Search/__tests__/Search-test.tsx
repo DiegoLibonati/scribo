@@ -10,7 +10,7 @@ import { useNotesStore } from "@src/hooks/useNotesStore";
 
 import { store } from "@src/slices/store";
 
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 type RenderComponent = {} & GlobalTest;
 

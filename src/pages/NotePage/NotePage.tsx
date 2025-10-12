@@ -10,7 +10,7 @@ import { NavBar } from "@src/components/NavBar/NavBar";
 import { NoteComplete } from "@src/components/NoteComplete/NoteComplete";
 
 import { useNotesStore } from "@src/hooks/useNotesStore";
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 export const NotePage = () => {
   const [note, setNote] = useState<Note | null>(null);

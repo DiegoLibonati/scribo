@@ -7,7 +7,7 @@ import { Checkbox } from "@src/components/Checkbox/Checkbox";
 import { useUiStore } from "@src/hooks/useUiStore";
 import { useNotesStore } from "@src/hooks/useNotesStore";
 
-import { theme } from "@src/theme/theme";
+import { theme } from "@src/styles/theme";
 
 export const DialogFilter = () => {
   const { filters, handleFilterChange } = useNotesStore();
