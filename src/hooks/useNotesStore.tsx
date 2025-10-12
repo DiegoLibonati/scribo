@@ -1,13 +1,13 @@
 import { Note } from "@src/entities/app";
 import { UseNotesStore } from "@src/entities/hooks";
 
-import { useAppDispatch, useAppSelector } from "@src/constants/redux";
+import { useAppDispatch, useAppSelector } from "@src/app/hooks";
 import {
   filterChange,
   newNote,
   removeNote,
   setNotesFiltered,
-} from "@src/slices/notes/notesSlice";
+} from "@src/features/notes/notesSlice";
 
 export const useNotesStore = (): UseNotesStore => {
   const dispatch = useAppDispatch();

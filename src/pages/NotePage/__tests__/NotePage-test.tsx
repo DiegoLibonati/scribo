@@ -9,7 +9,7 @@ import { GlobalTest } from "@src/entities/tests";
 import { NotePage } from "@src/pages/NotePage/NotePage";
 
 import { useNotesStore } from "@src/hooks/useNotesStore";
-import { store } from "@src/slices/store";
+import { store } from "@src/app/store";
 
 type RenderComponent = {} & GlobalTest;
 

@@ -7,7 +7,7 @@ import { GlobalTest } from "@src/entities/tests";
 
 import { NotesPage } from "@src/pages/NotesPage/NotesPage";
 
-import { store } from "@src/slices/store";
+import { store } from "@src/app/store";
 
 type RenderComponent = {} & GlobalTest;
 

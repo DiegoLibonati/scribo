@@ -3,8 +3,9 @@ import { Provider } from "react-redux";
 import { StatusBar } from "expo-status-bar";
 import { NativeRouter } from "react-router-native";
 
-import { NotesRouter } from "./src/router/NotesRouter";
-import { store } from "./src/slices/store";
+import { NotesRouter } from "@src/router/NotesRouter";
+
+import { store } from "@src/app/store";
 
 export default function App() {
   return (

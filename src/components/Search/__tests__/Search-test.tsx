@@ -8,7 +8,7 @@ import { Search } from "@src/components/Search/Search";
 
 import { useNotesStore } from "@src/hooks/useNotesStore";
 
-import { store } from "@src/slices/store";
+import { store } from "@src/app/store";
 
 import { theme } from "@src/styles/theme";
 

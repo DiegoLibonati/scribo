@@ -1,8 +1,8 @@
 import { UseUiStore } from "@src/entities/hooks";
 
-import { closeModal, openModal } from "@src/slices/ui/uiSlice";
+import { closeModal, openModal } from "@src/features/ui/uiSlice";
 
-import { useAppDispatch, useAppSelector } from "@src/constants/redux";
+import { useAppDispatch, useAppSelector } from "@src/app/hooks";
 
 export const useUiStore = (): UseUiStore => {
   const dispatch = useAppDispatch();

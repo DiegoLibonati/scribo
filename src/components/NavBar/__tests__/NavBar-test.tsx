@@ -10,7 +10,7 @@ import { NavBar } from "@src/components/NavBar/NavBar";
 
 import { useUiStore } from "@src/hooks/useUiStore";
 
-import { store } from "@src/slices/store";
+import { store } from "@src/app/store";
 
 type RenderComponent = {} & GlobalTest;
 

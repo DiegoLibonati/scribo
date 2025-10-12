@@ -7,7 +7,7 @@ import { GlobalTest } from "@src/entities/tests";
 
 import { CreateNotePage } from "@src/pages/CreateNotePage/CreateNotePage";
 
-import { store } from "@src/slices/store";
+import { store } from "@src/app/store";
 import { useNotesStore } from "@src/hooks/useNotesStore";
 
 type RenderComponent = {} & GlobalTest;
