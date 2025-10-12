@@ -2,12 +2,14 @@ import { fireEvent, render } from "@testing-library/react-native";
 
 import { Provider } from "react-redux";
 
-import { GlobalTest } from "@src/entities/entities";
+import { GlobalTest } from "@src/entities/tests";
 
 import { Search } from "@src/components/Search/Search";
 
 import { useNotesStore } from "@src/hooks/useNotesStore";
+
 import { store } from "@src/slices/store";
+
 import { theme } from "@src/theme/theme";
 
 type RenderComponent = {} & GlobalTest;

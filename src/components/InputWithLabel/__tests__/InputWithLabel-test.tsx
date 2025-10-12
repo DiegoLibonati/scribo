@@ -2,19 +2,15 @@ import { render, fireEvent } from "@testing-library/react-native";
 
 import { DimensionValue } from "react-native";
 
-import { GlobalTest } from "@src/entities/entities";
+import { GlobalTest } from "@src/entities/tests";
+import { InputWithLabelProps } from "@src/entities/props";
 
 import { InputWithLabel } from "@src/components/InputWithLabel/InputWithLabel";
 
 type RenderComponent = {
   props: {
-    label: string;
-    placeholder: string;
-    value: string;
-    inputHeight?: DimensionValue;
-    placeholderTextColor?: string;
-    mockOnChangeText: jest.Mock;
-  };
+    onChangeText: jest.Mock;
+  } & InputWithLabelProps;
 } & GlobalTest;
 
 const renderComponent = (): RenderComponent => {
@@ -24,7 +20,7 @@ const renderComponent = (): RenderComponent => {
     value: "",
     inputHeight: 45,
     placeholderTextColor: "red",
-    mockOnChangeText: jest.fn(),
+    onChangeText: jest.fn(),
   };
 
   const { debug, getByText, getByRole, getByTestId } = render(
@@ -34,7 +30,7 @@ const renderComponent = (): RenderComponent => {
       value={props.value}
       placeholder={props.placeholder}
       placeholderTextColor={props.placeholderTextColor}
-      onChangeText={props.mockOnChangeText}
+      onChangeText={props.onChangeText}
     ></InputWithLabel>
   );
 
@@ -77,7 +73,7 @@ describe("InputWithLabel.tsx", () => {
 
       fireEvent.changeText(input);
 
-      expect(props.mockOnChangeText).toHaveBeenCalledTimes(1);
+      expect(props.onChangeText).toHaveBeenCalledTimes(1);
     });
 
     test("It should render the placeholder and the placeholder color entered by props.", () => {

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-native";
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 
-import { Note } from "@src/entities/entities";
+import { Note } from "@src/entities/app";
 
 import { NavBar } from "@src/components/NavBar/NavBar";
 import { NoteComplete } from "@src/components/NoteComplete/NoteComplete";

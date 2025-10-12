@@ -2,17 +2,13 @@ import { render } from "@testing-library/react-native";
 
 import { MemoryRouter } from "react-router-native";
 
-import { GlobalTest } from "@src/entities/entities";
+import { GlobalTest } from "@src/entities/tests";
 
 import { Note } from "@src/components/Note/Note";
+import { NoteProps } from "@src/entities/props";
 
 type RenderComponent = {
-  props: {
-    id: string;
-    date: string;
-    title: string;
-    content: string;
-  };
+  props: NoteProps;
 } & GlobalTest;
 
 const renderComponent = (): RenderComponent => {

@@ -2,7 +2,7 @@ import { render, fireEvent } from "@testing-library/react-native";
 
 import { Provider } from "react-redux";
 
-import { GlobalTest } from "@src/entities/entities";
+import { GlobalTest } from "@src/entities/tests";
 
 import { DialogFilter } from "@src/components/DialogFilter/DialogFilter";
 

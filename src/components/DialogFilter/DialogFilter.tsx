@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Modal, Pressable } from "react-native";
 
-import { Filter } from "@src/entities/entities";
+import { Filter } from "@src/entities/app";
 
 import { Checkbox } from "@src/components/Checkbox/Checkbox";
 

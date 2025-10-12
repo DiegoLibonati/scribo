@@ -3,7 +3,7 @@ import { fireEvent, render } from "@testing-library/react-native";
 import { MemoryRouter } from "react-router-native";
 import { Provider } from "react-redux";
 
-import { GlobalTest } from "@src/entities/entities";
+import { GlobalTest } from "@src/entities/tests";
 
 import { CreateNotePage } from "@src/pages/CreateNotePage/CreateNotePage";
 

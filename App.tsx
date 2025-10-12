@@ -10,7 +10,12 @@ export default function App() {
   return (
     <Provider store={store}>
       <StatusBar style="light" />
-      <NativeRouter>
+      <NativeRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         <NotesRouter></NotesRouter>
       </NativeRouter>
     </Provider>

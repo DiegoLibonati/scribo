@@ -1,5 +1,3 @@
-import { store } from "@src/slices/store";
-
 import { DebugFunction } from "@testing-library/react-native";
 import {
   GetAllByQuery,
@@ -15,40 +13,6 @@ import {
   ByRoleMatcher,
   ByRoleOptions,
 } from "@testing-library/react-native/build/queries/role";
-
-// New
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-
-export type Modal = {
-  isOpen: boolean;
-};
-
-export type UiState = {
-  modal: Modal;
-};
-
-export type Note = {
-  id: string;
-  date: string;
-  title: string;
-  content: string;
-};
-
-export type Filter = {
-  id: string;
-  name: string;
-  isActive: boolean;
-};
-
-export type NotesState = {
-  notes: Note[];
-  notesFiltered: Note[];
-  isFiltering: boolean;
-  filters: Filter[];
-};
-
-// Tests
 
 export type GlobalTest = {
   debug: DebugFunction;

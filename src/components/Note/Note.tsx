@@ -1,14 +1,9 @@
 import { StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
 import { useNavigate } from "react-router-native";
 
-import { theme } from "@src/theme/theme";
+import { NoteProps } from "@src/entities/props";
 
-interface NoteProps {
-  id: string;
-  date: string;
-  title: string;
-  content: string;
-}
+import { theme } from "@src/theme/theme";
 
 export const Note = ({ id, date, title, content }: NoteProps) => {
   const navigate = useNavigate();

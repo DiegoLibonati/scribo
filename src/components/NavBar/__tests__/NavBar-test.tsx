@@ -3,24 +3,22 @@ import { render, fireEvent } from "@testing-library/react-native";
 import { MemoryRouter } from "react-router-native";
 import { Provider } from "react-redux";
 
-import { GlobalTest } from "@src/entities/entities";
+import { GlobalTest } from "@src/entities/tests";
+import { NavBarProps } from "@src/entities/props";
 
 import { NavBar } from "@src/components/NavBar/NavBar";
 
 import { useUiStore } from "@src/hooks/useUiStore";
+
 import { store } from "@src/slices/store";
 
 type RenderComponent = {} & GlobalTest;
 
 interface RenderComponentProps {
-  goBack: boolean;
-  filter: boolean;
+  props: NavBarProps;
 }
 
-const renderComponent = ({
-  goBack,
-  filter,
-}: RenderComponentProps): RenderComponent => {
+const renderComponent = ({ props }: RenderComponentProps): RenderComponent => {
   const {
     debug,
     getByText,
@@ -33,7 +31,7 @@ const renderComponent = ({
       <MemoryRouter
         future={{ v7_relativeSplatPath: true, v7_startTransition: true }}
       >
-        <NavBar filter={filter} goBack={goBack} />
+        <NavBar filter={props.filter} goBack={props.goBack} />
       </MemoryRouter>
     </Provider>
   );
@@ -61,6 +59,7 @@ describe("Navbar.tsx", () => {
   describe("If goBack is true.", () => {
     const mockHandleOpenModal = jest.fn();
     const goBack = true;
+    const filter = false;
 
     beforeEach(() => {
       (useUiStore as jest.Mock).mockReturnValue({
@@ -69,7 +68,9 @@ describe("Navbar.tsx", () => {
     });
 
     test("It must render the button to go back.", () => {
-      const { gets } = renderComponent({ goBack: goBack, filter: false });
+      const { gets } = renderComponent({
+        props: { goBack: goBack, filter: filter },
+      });
 
       const touchableGoBack = gets?.getByTestId!("go-back");
 
@@ -79,6 +80,7 @@ describe("Navbar.tsx", () => {
 
   describe("If filter is true.", () => {
     const mockHandleOpenModal = jest.fn();
+    const goBack = false;
     const filter = true;
 
     beforeEach(() => {
@@ -88,7 +90,9 @@ describe("Navbar.tsx", () => {
     });
 
     test("It must render the button to open the filters modal and also when pressed it must execute the relevant functions.", () => {
-      const { gets } = renderComponent({ goBack: false, filter: filter });
+      const { gets } = renderComponent({
+        props: { goBack: goBack, filter: filter },
+      });
 
       const touchableFilters = gets?.getByTestId!("open-filters");
 
@@ -110,7 +114,9 @@ describe("Navbar.tsx", () => {
     });
 
     test("It must render the title.", () => {
-      const { gets } = renderComponent({ goBack: false, filter: false });
+      const { gets } = renderComponent({
+        props: { goBack: false, filter: false },
+      });
 
       const title = gets?.getByText!("Notes App");
 

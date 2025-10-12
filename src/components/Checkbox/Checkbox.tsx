@@ -1,13 +1,8 @@
 import { View, Pressable, Text, StyleSheet } from "react-native";
 
-import { theme } from "@src/theme/theme";
+import { CheckboxProps } from "@src/entities/props";
 
-interface CheckboxProps {
-  id: string;
-  name: string;
-  active: boolean;
-  onPress: (name: string) => void;
-}
+import { theme } from "@src/theme/theme";
 
 export const Checkbox = ({ id, name, active, onPress }: CheckboxProps) => {
   return (

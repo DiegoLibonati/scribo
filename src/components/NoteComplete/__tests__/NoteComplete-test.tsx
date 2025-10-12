@@ -1,15 +1,12 @@
 import { render } from "@testing-library/react-native";
 
-import { GlobalTest } from "@src/entities/entities";
+import { GlobalTest } from "@src/entities/tests";
+import { NoteCompleteProps } from "@src/entities/props";
 
 import { NoteComplete } from "@src/components/NoteComplete/NoteComplete";
 
 type RenderComponent = {
-  props: {
-    date: string;
-    title: string;
-    content: string;
-  };
+  props: NoteCompleteProps;
 } & GlobalTest;
 
 const renderComponent = (): RenderComponent => {

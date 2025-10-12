@@ -4,13 +4,14 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Note } from "@src/components/Note/Note";
 
 import { useNotesStore } from "@src/hooks/useNotesStore";
+
 import { theme } from "@src/theme/theme";
 
 export const NotesList = () => {
   const { notes, notesFiltered, isFiltering } = useNotesStore();
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       {!notes.length && !isFiltering && (
         <Text style={styles.notFoundNotes}>
           You still don't have notes created.

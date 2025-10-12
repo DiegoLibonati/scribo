@@ -1,6 +1,7 @@
 import { render, fireEvent } from "@testing-library/react-native";
 
-import { GlobalTest } from "@src/entities/entities";
+import { GlobalTest } from "@src/entities/tests";
+import { CheckboxProps } from "@src/entities/props";
 
 import { Checkbox } from "@src/components/Checkbox/Checkbox";
 
@@ -8,11 +9,8 @@ import { theme } from "@src/theme/theme";
 
 type RenderComponent = {
   props: {
-    id: string;
-    name: string;
-    active: boolean;
     onPress: jest.Mock;
-  };
+  } & CheckboxProps;
 } & GlobalTest;
 
 interface RenderComponentProps {

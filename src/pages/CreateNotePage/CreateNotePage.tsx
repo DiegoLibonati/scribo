@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-native";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import Constants from "expo-constants";
 
-import { Note } from "@src/entities/entities";
+import { Note } from "@src/entities/app";
 
 import { NavBar } from "@src/components/NavBar/NavBar";
 import { InputWithLabel } from "@src/components/InputWithLabel/InputWithLabel";

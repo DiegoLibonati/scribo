@@ -1,12 +1,8 @@
 import { StyleSheet, ScrollView, Text } from "react-native";
 
-import { theme } from "@src/theme/theme";
+import { NoteCompleteProps } from "@src/entities/props";
 
-interface NoteCompleteProps {
-  date: string;
-  title: string;
-  content: string;
-}
+import { theme } from "@src/theme/theme";
 
 export const NoteComplete = ({ date, title, content }: NoteCompleteProps) => {
   return (

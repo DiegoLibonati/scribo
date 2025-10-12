@@ -3,7 +3,7 @@ import { render } from "@testing-library/react-native";
 import { MemoryRouter } from "react-router-native";
 import { Provider } from "react-redux";
 
-import { GlobalTest } from "@src/entities/entities";
+import { GlobalTest } from "@src/entities/tests";
 
 import { NotesPage } from "@src/pages/NotesPage/NotesPage";
 

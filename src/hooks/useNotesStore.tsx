@@ -1,4 +1,5 @@
-import { Note, Filter } from "@src/entities/entities";
+import { Note } from "@src/entities/app";
+import { UseNotesStore } from "@src/entities/hooks";
 
 import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 import {
@@ -7,17 +8,6 @@ import {
   removeNote,
   setNotesFiltered,
 } from "@src/slices/notes/notesSlice";
-
-type UseNotesStore = {
-  notes: Note[];
-  notesFiltered: Note[];
-  isFiltering: boolean;
-  filters: Filter[];
-  handleSetNotesFiltered: (search: string) => void;
-  handleFilterChange: (idFilter: string) => void;
-  handleSetNewNote: (note: Note) => void;
-  handleRemoveNote: (idNote: string) => void;
-};
 
 export const useNotesStore = (): UseNotesStore => {
   const dispatch = useAppDispatch();

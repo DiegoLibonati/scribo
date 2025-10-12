@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
 import { useNotesStore } from "@src/hooks/useNotesStore";
+
 import { theme } from "@src/theme/theme";
 
 export const Search = () => {

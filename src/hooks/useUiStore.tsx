@@ -1,13 +1,8 @@
-import { Modal } from "@src/entities/entities";
+import { UseUiStore } from "@src/entities/hooks";
 
 import { closeModal, openModal } from "@src/slices/ui/uiSlice";
-import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 
-type UseUiStore = {
-  modal: Modal;
-  handleOpenModal: () => void;
-  handleCloseModal: () => void;
-};
+import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 
 export const useUiStore = (): UseUiStore => {
   const dispatch = useAppDispatch();

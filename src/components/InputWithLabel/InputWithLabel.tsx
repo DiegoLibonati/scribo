@@ -1,21 +1,8 @@
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  DimensionValue,
-} from "react-native";
+import { View, Text, TextInput, StyleSheet } from "react-native";
+
+import { InputWithLabelProps } from "@src/entities/props";
 
 import { theme } from "@src/theme/theme";
-
-interface InputWithLabelProps {
-  label: string;
-  placeholder: string;
-  value: string;
-  inputHeight?: DimensionValue;
-  placeholderTextColor?: string;
-  onChangeText: (text: string) => void;
-}
 
 export const InputWithLabel = ({
   label,
