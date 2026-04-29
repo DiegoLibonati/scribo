@@ -31,7 +31,7 @@ const NotesScreen = (): JSX.Element => {
         onPress={handlePressCreateNewNote}
         testID="create-new-note"
       >
-        <Ionicons name="pencil" size={30} color={theme.colors.light.text.primary} />
+        <Ionicons name="pencil" size={30} color={theme.colors.dark.primary} />
       </TouchableOpacity>
     </View>
   );
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: theme.colors.light.background.screen,
+    backgroundColor: theme.colors.white,
   },
   new: {
     alignItems: "center",

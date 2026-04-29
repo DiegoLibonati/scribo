@@ -12,7 +12,7 @@ const Checkbox = ({ id, name, active, onPress }: CheckboxProps): JSX.Element => 
         style={[
           styles.checkbox,
           {
-            backgroundColor: active ? theme.colors.light.primary : theme.colors.light.text.primary,
+            backgroundColor: active ? theme.colors.light.primary : theme.colors.dark.primary,
           },
         ]}
         onPress={() => {
@@ -35,15 +35,15 @@ const styles = StyleSheet.create({
   checkbox: {
     width: 20,
     height: 20,
-    backgroundColor: theme.colors.light.text.primary,
-    borderColor: theme.colors.light.border.default,
+    backgroundColor: theme.colors.dark.primary,
+    borderColor: theme.colors.light.secondary,
     borderWidth: 1,
     borderRadius: 50,
   },
   checkboxText: {
     marginLeft: 8,
     fontSize: 20,
-    color: theme.colors.light.text.primary,
+    color: theme.colors.dark.primary,
   },
 });
 

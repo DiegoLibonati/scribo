@@ -57,7 +57,7 @@ const NoteScreen = (): JSX.Element => {
           if (note?.id) handlePressRemoveNote(note.id);
         }}
       >
-        <Ionicons name="close" size={30} color={theme.colors.light.text.primary} />
+        <Ionicons name="close" size={30} color={theme.colors.dark.primary} />
       </TouchableOpacity>
     </View>
   );
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: theme.colors.light.background.screen,
+    backgroundColor: theme.colors.white,
   },
   remove: {
     alignItems: "center",

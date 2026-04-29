@@ -56,20 +56,20 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: `rgba(${theme.colors.light.background.overlay}, 0.5)`,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modal: {
     alignItems: "center",
     justifyContent: "flex-start",
     width: "75%",
     height: "40%",
-    backgroundColor: theme.colors.light.background.screen,
+    backgroundColor: theme.colors.white,
     borderRadius: 10,
     padding: 10,
   },
   textModal: {
     fontSize: 25,
-    color: theme.colors.light.text.primary,
+    color: theme.colors.dark.primary,
   },
   buttonModal: {
     position: "absolute",
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   textButtonModal: {
-    color: theme.colors.light.text.primary,
+    color: theme.colors.dark.primary,
   },
 });
 

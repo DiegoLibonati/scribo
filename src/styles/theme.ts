@@ -1,59 +1,12 @@
 import { palette } from "@/styles/colors";
 
-const lightColors = {
-  primary: palette.secondary,
-  text: {
-    primary: palette.white,
-    secondary: palette.quaternary,
-    disabled: palette.tertiary,
-    inverse: palette.primary,
-    link: palette.tertiary,
-  },
-  background: {
-    screen: palette.primary,
-    card: palette.secondary,
-    input: palette.secondary,
-    overlay: palette.blackInt,
-  },
-  border: {
-    default: palette.secondary,
-  },
-  status: {
-    success: palette.quinary,
-    error: palette.red500,
-    warning: palette.yellow500,
-  },
-};
-
-const darkColors = {
-  primary: palette.blue500,
-  text: {
-    primary: palette.gray50,
-    secondary: palette.gray400,
-    disabled: palette.gray500,
-    inverse: palette.gray900,
-    link: palette.blue400,
-  },
-  background: {
-    screen: palette.gray950,
-    card: palette.gray800,
-    input: palette.gray700,
-    overlay: palette.blackInt,
-  },
-  border: {
-    default: palette.gray700,
-  },
-  status: {
-    success: palette.quinary,
-    error: palette.red500,
-    warning: palette.yellow500,
-  },
-};
-
 export const theme = {
   colors: {
-    light: lightColors,
-    dark: darkColors,
+    light: palette.light,
+    dark: palette.dark,
+    white: palette.white,
+    black: palette.black,
+    error: palette.error,
   },
 
   spacing: {

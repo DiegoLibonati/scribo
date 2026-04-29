@@ -28,13 +28,13 @@ const NavBar = ({ goBack, filter }: NavBarProps): JSX.Element => {
 
       {goBack && (
         <TouchableOpacity onPress={handlePressBack} style={styles.goBack} testID="go-back">
-          <Ionicons name="arrow-back-outline" size={30} color={theme.colors.light.text.primary} />
+          <Ionicons name="arrow-back-outline" size={30} color={theme.colors.dark.primary} />
         </TouchableOpacity>
       )}
 
       {filter && (
         <TouchableOpacity onPress={handlePressFilter} style={styles.filter} testID="open-filters">
-          <Ionicons name="filter" size={30} color={theme.colors.light.text.primary} />
+          <Ionicons name="filter" size={30} color={theme.colors.dark.primary} />
         </TouchableOpacity>
       )}
     </View>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   navbarText: {
     fontSize: 21,
     fontWeight: "bold",
-    color: theme.colors.light.text.primary,
+    color: theme.colors.dark.primary,
   },
   shadow: {
     position: "absolute",
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     right: 0,
     height: 1.5,
     borderRadius: 10,
-    backgroundColor: theme.colors.light.border.default,
+    backgroundColor: theme.colors.light.secondary,
     opacity: 0.2,
     zIndex: -1,
   },

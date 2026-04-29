@@ -23,7 +23,7 @@ const Search = (): JSX.Element => {
         placeholder="Search note..."
         onChangeText={setValueFilter}
         value={valueFilter}
-        placeholderTextColor={theme.colors.light.text.primary}
+        placeholderTextColor={theme.colors.dark.primary}
         testID="search-input"
       ></TextInput>
     </View>
@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
     width: "80%",
     padding: 10,
     borderRadius: 50,
-    borderColor: theme.colors.light.border.default,
+    borderColor: theme.colors.light.secondary,
     borderWidth: 1,
-    color: theme.colors.light.text.primary,
+    color: theme.colors.dark.primary,
   },
 });
 
