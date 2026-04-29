@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   notFoundNotes: {
     textAlign: "center",
     fontSize: 15,
-    color: theme.colors.white,
+    color: theme.colors.light.text.primary,
   },
 });
 

@@ -37,14 +37,14 @@ const styles = StyleSheet.create({
   label: {
     paddingBottom: 10,
     fontSize: 20,
-    color: theme.colors.white,
+    color: theme.colors.light.text.primary,
   },
   input: {
-    borderColor: theme.colors.secondary,
+    borderColor: theme.colors.light.border.default,
     padding: 10,
     borderWidth: 1,
     borderRadius: 10,
-    color: theme.colors.white,
+    color: theme.colors.light.text.primary,
   },
 });
 

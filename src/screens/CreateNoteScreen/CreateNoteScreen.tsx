@@ -56,7 +56,7 @@ const CreateNoteScreen = (): JSX.Element => {
           label="Insert a Title"
           placeholder="Title..."
           value={formData.title}
-          placeholderTextColor={theme.colors.white}
+          placeholderTextColor={theme.colors.light.text.primary}
           onChangeText={(text) => {
             onInputChange("title", text);
           }}
@@ -66,7 +66,7 @@ const CreateNoteScreen = (): JSX.Element => {
           label="Insert a Content"
           placeholder="Content..."
           value={formData.content}
-          placeholderTextColor={theme.colors.white}
+          placeholderTextColor={theme.colors.light.text.primary}
           onChangeText={(text) => {
             onInputChange("content", text);
           }}
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.light.background.screen,
   },
   form: {
     flex: 1,
@@ -93,13 +93,13 @@ const styles = StyleSheet.create({
   },
   button: {
     alignSelf: "flex-end",
-    backgroundColor: theme.colors.secondary,
+    backgroundColor: theme.colors.light.primary,
     padding: 10,
     borderRadius: 10,
     marginTop: 10,
   },
   buttonText: {
-    color: theme.colors.white,
+    color: theme.colors.light.text.primary,
   },
 });
 

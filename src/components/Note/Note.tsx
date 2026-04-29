@@ -31,7 +31,7 @@ const Note = ({ id, date, title, content }: NoteProps): JSX.Element => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.secondary,
+    backgroundColor: theme.colors.light.background.card,
     padding: 5,
     margin: 5,
     borderRadius: 10,
@@ -40,18 +40,18 @@ const styles = StyleSheet.create({
   date: {
     alignSelf: "flex-end",
     fontSize: 10,
-    color: theme.colors.white,
+    color: theme.colors.light.text.primary,
   },
   title: {
     alignSelf: "center",
     fontSize: 21,
     textAlign: "center",
-    color: theme.colors.white,
+    color: theme.colors.light.text.primary,
   },
   content: {
     fontSize: 14,
     marginTop: 8,
-    color: theme.colors.white,
+    color: theme.colors.light.text.primary,
   },
 });
 

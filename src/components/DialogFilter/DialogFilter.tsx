@@ -56,32 +56,32 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: `rgba(${theme.colors.blackInt}, 0.5)`,
+    backgroundColor: `rgba(${theme.colors.light.background.overlay}, 0.5)`,
   },
   modal: {
     alignItems: "center",
     justifyContent: "flex-start",
     width: "75%",
     height: "40%",
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.light.background.screen,
     borderRadius: 10,
     padding: 10,
   },
   textModal: {
     fontSize: 25,
-    color: theme.colors.white,
+    color: theme.colors.light.text.primary,
   },
   buttonModal: {
     position: "absolute",
     alignSelf: "flex-end",
     bottom: 5,
     right: 5,
-    backgroundColor: theme.colors.secondary,
+    backgroundColor: theme.colors.light.primary,
     padding: 10,
     borderRadius: 10,
   },
   textButtonModal: {
-    color: theme.colors.white,
+    color: theme.colors.light.text.primary,
   },
 });
 
