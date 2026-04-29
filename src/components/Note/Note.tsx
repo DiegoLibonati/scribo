@@ -1,15 +1,16 @@
 import { StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
-import { useNavigate } from "react-router-native";
+import { useRouter } from "expo-router";
 
-import { NoteProps } from "@src/entities/props";
+import type { JSX } from "react";
+import type { NoteProps } from "@/types/props";
 
-import { theme } from "@src/styles/theme";
+import { theme } from "@/styles/theme";
 
-export const Note = ({ id, date, title, content }: NoteProps) => {
-  const navigate = useNavigate();
+const Note = ({ id, date, title, content }: NoteProps): JSX.Element => {
+  const router = useRouter();
 
   const handlePressNote = (): void => {
-    navigate(`/${id}`);
+    router.navigate(`/${id}`);
   };
 
   return (
@@ -53,3 +54,5 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
   },
 });
+
+export default Note;

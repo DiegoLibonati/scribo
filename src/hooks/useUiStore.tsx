@@ -1,8 +1,8 @@
-import { UseUiStore } from "@src/entities/hooks";
+import type { UseUiStore } from "@/types/hooks";
 
-import { closeModal, openModal } from "@src/features/ui/uiSlice";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 
-import { useAppDispatch, useAppSelector } from "@src/app/hooks";
+import { closeModal, openModal } from "@/features/ui/uiSlice";
 
 export const useUiStore = (): UseUiStore => {
   const dispatch = useAppDispatch();

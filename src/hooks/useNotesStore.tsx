@@ -1,25 +1,19 @@
-import { Note } from "@src/entities/app";
-import { UseNotesStore } from "@src/entities/hooks";
+import type { Note } from "@/types/app";
+import type { UseNotesStore } from "@/types/hooks";
 
-import { useAppDispatch, useAppSelector } from "@src/app/hooks";
-import {
-  filterChange,
-  newNote,
-  removeNote,
-  setNotesFiltered,
-} from "@src/features/notes/notesSlice";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+
+import { filterChange, newNote, removeNote, setNotesFiltered } from "@/features/notes/notesSlice";
 
 export const useNotesStore = (): UseNotesStore => {
   const dispatch = useAppDispatch();
-  const { notes, notesFiltered, isFiltering, filters } = useAppSelector(
-    (state) => state.notes
-  );
+  const { notes, notesFiltered, isFiltering, filters } = useAppSelector((state) => state.notes);
 
-  const handleSetNotesFiltered = (search: string) => {
+  const handleSetNotesFiltered = (search: string): void => {
     dispatch(setNotesFiltered(search));
   };
 
-  const handleFilterChange = (idFilter: string) => {
+  const handleFilterChange = (idFilter: string): void => {
     dispatch(filterChange(idFilter));
   };
 

@@ -1,22 +1,23 @@
 import { View, Pressable, Text, StyleSheet } from "react-native";
 
-import { CheckboxProps } from "@src/entities/props";
+import type { JSX } from "react";
+import type { CheckboxProps } from "@/types/props";
 
-import { theme } from "@src/styles/theme";
+import { theme } from "@/styles/theme";
 
-export const Checkbox = ({ id, name, active, onPress }: CheckboxProps) => {
+const Checkbox = ({ id, name, active, onPress }: CheckboxProps): JSX.Element => {
   return (
     <View style={styles.checkboxContainer} testID="checkbox-root">
       <Pressable
         style={[
           styles.checkbox,
           {
-            backgroundColor: active
-              ? theme.colors.secondary
-              : theme.colors.white,
+            backgroundColor: active ? theme.colors.secondary : theme.colors.white,
           },
         ]}
-        onPress={() => onPress(id)}
+        onPress={() => {
+          onPress(id);
+        }}
         testID={`pressable-${id}`}
       ></Pressable>
       <Text style={styles.checkboxText}>{name}</Text>
@@ -45,3 +46,5 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
   },
 });
+
+export default Checkbox;

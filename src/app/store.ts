@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import notesSlice from "@src/features/notes/notesSlice";
-import uiSlice from "@src/features/ui/uiSlice";
+import notesSlice from "@/features/notes/notesSlice";
+import uiSlice from "@/features/ui/uiSlice";
 
 export const store = configureStore({
   reducer: {

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-import { Note } from "@src/entities/app";
-import { NotesState } from "@src/entities/states";
+import type { Note } from "@/types/app";
+import type { NotesState } from "@/types/states";
 
 const initialState: NotesState = {
   notes: [],
@@ -60,7 +60,6 @@ export const notesSlice = createSlice({
   },
 });
 
-export const { setNotesFiltered, filterChange, newNote, removeNote } =
-  notesSlice.actions;
+export const { setNotesFiltered, filterChange, newNote, removeNote } = notesSlice.actions;
 
 export default notesSlice.reducer;

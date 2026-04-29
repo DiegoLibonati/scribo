@@ -1,4 +1,4 @@
-# Notes Native
+# Scribo
 
 ## Educational Purpose
 
@@ -8,23 +8,35 @@ The main goal is to explore and demonstrate best practices, patterns, and techno
 
 ## Getting Started
 
-1. Clone the repository on your computer using: `git clone URL`.
-2. Go to the APP directory.
-3. Execute: `yarn install` or `npm install`
-4. Execute: `yarn run start` or `npm run start` and select the desired option!
+1. Clone the repository
+2. Navigate to the project folder
+3. Execute: `npm install`
+4. Execute: `npm start`
 
-- If you don't have expo and an Android simulator installed, search for a tutorial on YouTube.
+Install **Expo Go** on your device ([Android](https://play.google.com/store/apps/details?id=host.exp.exponent) / [iOS](https://apps.apple.com/app/expo-go/id982107779)) and scan the QR code that appears in the terminal.
 
 ## Description
 
-This native application is a notepad. It allows you to add notes, view these notes one by one by tapping on the note to be viewed. Additionally, the creation date, a title, and a content of the note can be viewed. While in the selected note, you can delete that note from all existing notes. Also, thanks to a component that I created, which is a list of checkboxes, you can filter by different filters such as date, title, or description, displaying only the filtered notes if it matches the filter and what you are looking to filter.
+**Scribo** is a mobile note-taking application built with React Native and Expo, designed to help users quickly capture, organize, and review their thoughts from any Android or iOS device.
+
+### Core features
+
+- **Create notes** — Each note is composed of a title, a body (content), and an automatically assigned creation date, so you always know when an idea was recorded.
+- **Browse your notes** — The home screen displays the full list of existing notes in a clean, scrollable list. Each item shows enough information at a glance to identify the note without opening it.
+- **Read a note in full** — Tapping any note opens a dedicated detail screen where the title, content, and creation date are presented without distractions.
+- **Delete a note** — While viewing a note, a single tap on the remove button permanently deletes it from the store and returns you to the list.
+- **Filter notes** — A filter dialog powered by a custom checkbox component lets you narrow down the list by one or more criteria: date, title, or content. Only notes that match the active filters and the current search input are shown, making it easy to find a specific entry even in a large collection.
+
+### Architecture highlights
+
+The application state is managed with Redux Toolkit, keeping the note list and UI state (search query, active filters) predictable and easy to extend. Navigation is handled by Expo Router, which provides file-based routing similar to Next.js. The codebase is written entirely in TypeScript and covered by a Jest + React Native Testing Library test suite.
 
 ## Technologies used
 
 1. React Native
-2. CSS
-3. Typescript
-4. Expo
+2. TypeScript
+3. Expo SDK 54
+4. expo-router
 
 ## Libraries used
 
@@ -33,47 +45,85 @@ This native application is a notepad. It allows you to add notes, view these not
 ```
 "@expo/vector-icons": "^15.0.2"
 "@reduxjs/toolkit": "^2.5.0"
-"expo": "^54.0.0"
-"expo-asset": "^12.0.8"
-"expo-constants": "^18.0.9"
-"expo-font": "^14.0.8"
-"expo-status-bar": "~3.0.8"
+"expo": "~54.0.0"
+"expo-constants": "~18.0.13"
+"expo-linking": "~8.0.12"
+"expo-router": "~6.0.23"
+"expo-status-bar": "~3.0.9"
+"expo-asset": "~12.0.9"
+"expo-font": "~14.0.9"
 "react": "19.1.0"
-"react-native": "0.81.4"
-"react-native-safe-area-context": "^5.6.1"
+"react-native": "0.81.5"
+"react-native-safe-area-context": "~5.6.0"
+"react-native-screens": "~4.16.0"
 "react-redux": "^9.2.0"
-"react-router-native": "^6.28.1"
 ```
 
 #### devDependencies
 
 ```
 "@babel/core": "^7.20.0"
-"@testing-library/jest-native": "^5.4.3"
+"@eslint/js": "^9.0.0"
 "@testing-library/react-native": "^12.1.2"
-"@types/jest": "^29.5.13"
-"@types/node": "^20.10.6"
+"@types/jest": "~29.5.14"
+"@types/node": "^22.0.0"
 "@types/react": "~19.1.10"
 "babel-plugin-module-resolver": "^5.0.2"
-"babel-preset-expo": "^54.0.1"
-"jest": "^29.7.0"
-"jest-expo": "~54.0.11"
+"babel-preset-expo": "~54.0.1"
+"eslint": "^9.0.0"
+"eslint-config-prettier": "^9.0.0"
+"eslint-plugin-prettier": "^5.5.5"
+"eslint-plugin-react-hooks": "^5.0.0"
+"globals": "^15.0.0"
+"husky": "^9.0.0"
+"jest": "~29.7.0"
+"jest-expo": "~54.0.0"
+"lint-staged": "^15.0.0"
+"prettier": "^3.0.0"
 "react-test-renderer": "19.1.0"
-"ts-node": "^10.9.2"
-"typescript": "^5.1.3"
+"typescript": "^5.2.2"
+"typescript-eslint": "^8.0.0"
 ```
 
 ## Portfolio Link
 
-[`https://www.diegolibonati.com.ar/#/project/Notes-Native`](https://www.diegolibonati.com.ar/#/project/Notes-Native)
-
-## Video
-
-https://user-images.githubusercontent.com/99032604/236560072-28dfdf6f-6cdd-4f96-ba2f-e371d9c807ee.mp4
+[`https://www.diegolibonati.com.ar/#/project/scribo`](https://www.diegolibonati.com.ar/#/project/scribo)
 
 ## Testing
 
-1. Join to the correct path of the clone
-2. Execute: `yarn test` or `npm test`
+1. Navigate to the project folder
+2. Execute: `npm test`
+
+For coverage report:
+
+```bash
+npm run test:coverage
+```
+
+## Security
+
+### npm audit
+
+Check for vulnerabilities in dependencies:
+
+```bash
+npm audit
+```
+
+### Expo Doctor
+
+Run a full health check on the project (dependency versions, SDK compatibility, configuration):
+
+```bash
+npm run doctor
+```
 
 ## Known Issues
+
+### npm audit reports 18 vulnerabilities (4 low, 14 moderate)
+
+Running `npm audit` reports vulnerabilities in `@tootallnate/once`, `postcss`, and `uuid`. All of them are transitive dependencies of Expo's internal toolchain — specifically `jest-expo`, `@expo/cli`, `@expo/metro-config`, and `@expo/config-plugins`. None of these packages are included in the app bundle delivered to end users; they run exclusively on the developer's machine during build and test.
+
+The suggested fix (`npm audit fix --force`) would downgrade `expo` to v49 and `jest-expo` to v47, both of which are incompatible with the current SDK. Do not run it.
+
+This is a known limitation of the Expo ecosystem tracked upstream. The vulnerabilities will be resolved when Expo updates its internal dependencies. No action is required on the project side.

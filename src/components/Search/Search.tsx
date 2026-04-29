@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
-import { useNotesStore } from "@src/hooks/useNotesStore";
+import type { JSX } from "react";
 
-import { theme } from "@src/styles/theme";
+import { useNotesStore } from "@/hooks/useNotesStore";
 
-export const Search = () => {
+import { theme } from "@/styles/theme";
+
+const Search = (): JSX.Element => {
   const { handleSetNotesFiltered } = useNotesStore();
 
   const [valueFilter, setValueFilter] = useState<string>("");
@@ -44,3 +46,5 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
   },
 });
+
+export default Search;

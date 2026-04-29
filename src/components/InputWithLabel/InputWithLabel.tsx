@@ -1,17 +1,18 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
-import { InputWithLabelProps } from "@src/entities/props";
+import type { JSX } from "react";
+import type { InputWithLabelProps } from "@/types/props";
 
-import { theme } from "@src/styles/theme";
+import { theme } from "@/styles/theme";
 
-export const InputWithLabel = ({
+const InputWithLabel = ({
   label,
   placeholder,
   inputHeight,
   value,
   placeholderTextColor,
   onChangeText,
-}: InputWithLabelProps) => {
+}: InputWithLabelProps): JSX.Element => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
@@ -46,3 +47,5 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
   },
 });
+
+export default InputWithLabel;

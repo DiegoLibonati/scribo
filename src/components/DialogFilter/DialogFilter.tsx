@@ -1,15 +1,16 @@
 import { StyleSheet, Text, View, Modal, Pressable } from "react-native";
 
-import { Filter } from "@src/entities/app";
+import type { JSX } from "react";
+import type { Filter } from "@/types/app";
 
-import { Checkbox } from "@src/components/Checkbox/Checkbox";
+import Checkbox from "@/components/Checkbox/Checkbox";
 
-import { useUiStore } from "@src/hooks/useUiStore";
-import { useNotesStore } from "@src/hooks/useNotesStore";
+import { useUiStore } from "@/hooks/useUiStore";
+import { useNotesStore } from "@/hooks/useNotesStore";
 
-import { theme } from "@src/styles/theme";
+import { theme } from "@/styles/theme";
 
-export const DialogFilter = () => {
+const DialogFilter = (): JSX.Element => {
   const { filters, handleFilterChange } = useNotesStore();
   const { modal, handleCloseModal } = useUiStore();
 
@@ -22,12 +23,7 @@ export const DialogFilter = () => {
   };
 
   return (
-    <Modal
-      animationType="fade"
-      transparent={true}
-      visible={modal.isOpen}
-      testID="dialog-filter"
-    >
+    <Modal animationType="fade" transparent={true} visible={modal.isOpen} testID="dialog-filter">
       <View style={styles.centeredView}>
         <View style={styles.modal}>
           <Text style={styles.textModal}>Filter by</Text>
@@ -88,3 +84,5 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
   },
 });
+
+export default DialogFilter;

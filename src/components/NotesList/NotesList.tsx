@@ -1,21 +1,21 @@
 import { FlatList, StyleSheet, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { Note } from "@src/components/Note/Note";
+import type { JSX } from "react";
 
-import { useNotesStore } from "@src/hooks/useNotesStore";
+import Note from "@/components/Note/Note";
 
-import { theme } from "@src/styles/theme";
+import { useNotesStore } from "@/hooks/useNotesStore";
 
-export const NotesList = () => {
+import { theme } from "@/styles/theme";
+
+const NotesList = (): JSX.Element => {
   const { notes, notesFiltered, isFiltering } = useNotesStore();
 
   return (
     <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       {!notes.length && !isFiltering && (
-        <Text style={styles.notFoundNotes}>
-          You still don't have notes created.
-        </Text>
+        <Text style={styles.notFoundNotes}>You still don't have notes created.</Text>
       )}
 
       {isFiltering && !notesFiltered.length ? (
@@ -50,3 +50,5 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
   },
 });
+
+export default NotesList;

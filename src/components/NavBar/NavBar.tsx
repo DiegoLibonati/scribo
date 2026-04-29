@@ -1,19 +1,20 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useNavigate } from "react-router-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
-import { NavBarProps } from "@src/entities/props";
+import type { JSX } from "react";
+import type { NavBarProps } from "@/types/props";
 
-import { useUiStore } from "@src/hooks/useUiStore";
+import { useUiStore } from "@/hooks/useUiStore";
 
-import { theme } from "@src/styles/theme";
+import { theme } from "@/styles/theme";
 
-export const NavBar = ({ goBack = false, filter = false }: NavBarProps) => {
+const NavBar = ({ goBack, filter }: NavBarProps): JSX.Element => {
   const { handleOpenModal } = useUiStore();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handlePressBack = (): void => {
-    navigate("/");
+    router.navigate("/");
   };
 
   const handlePressFilter = (): void => {
@@ -26,25 +27,13 @@ export const NavBar = ({ goBack = false, filter = false }: NavBarProps) => {
       <View style={styles.shadow} />
 
       {goBack && (
-        <TouchableOpacity
-          onPress={handlePressBack}
-          style={styles.goBack}
-          testID="go-back"
-        >
-          <Ionicons
-            name="arrow-back-outline"
-            size={30}
-            color={theme.colors.white}
-          />
+        <TouchableOpacity onPress={handlePressBack} style={styles.goBack} testID="go-back">
+          <Ionicons name="arrow-back-outline" size={30} color={theme.colors.white} />
         </TouchableOpacity>
       )}
 
       {filter && (
-        <TouchableOpacity
-          onPress={handlePressFilter}
-          style={styles.filter}
-          testID="open-filters"
-        >
+        <TouchableOpacity onPress={handlePressFilter} style={styles.filter} testID="open-filters">
           <Ionicons name="filter" size={30} color={theme.colors.white} />
         </TouchableOpacity>
       )}
@@ -86,3 +75,5 @@ const styles = StyleSheet.create({
     right: 5,
   },
 });
+
+export default NavBar;

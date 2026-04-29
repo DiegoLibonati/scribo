@@ -1,4 +1,4 @@
-const colors = {
+export const palette = {
   primary: "#320E3B",
   secondary: "#4C2A85",
   tertiary: "#6B7FD7",
@@ -8,5 +8,3 @@ const colors = {
   black: "#000000",
   blackInt: "0, 0, 0",
 };
-
-export default colors;
